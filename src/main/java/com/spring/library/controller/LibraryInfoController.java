@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class BookSearchController {
+public class LibraryInfoController {
 
-	@RequestMapping(value="/bookSearch/bookSearch", method=RequestMethod.GET)
-	public void bookSearch() { }
+	@RequestMapping(value="/libraryInfo/libraryMap", method=RequestMethod.GET)
+	public void libraryMap() { }
 }

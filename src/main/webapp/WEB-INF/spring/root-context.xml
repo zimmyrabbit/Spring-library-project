@@ -17,15 +17,15 @@
 		
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/test"/>
-		<property name="username" value="root"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/library?serverTimezone=UTC"/>
+		<property name="username" value="library"/>
 		<property name="password" value="mysql12"/>
 	</bean>		
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">     
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/sqlMapper/*.xml" />
+		<property name="mapperLocations" value="classpath:sqlMapper/*.xml" />
     </bean>
     
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
