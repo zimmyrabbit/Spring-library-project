@@ -1,7 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
@@ -45,8 +46,8 @@
                 <div class="rd-navbar-collapse">
                   <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content"><span></span></button>
                   <div class="rd-navbar-collapse-content" id="rd-navbar-collapse-content">
-                  <a class="button button-primary-outline button-winona" href="<c:url value='/user/userReg'/>">Î°úÍ∑∏Ïù∏</a>
-                  <a class="button button-primary button-winona" href="<c:url value='/user/userReg'/>">ÌöåÏõêÍ∞ÄÏûÖ</a>
+                  <a class="button button-primary-outline button-winona"  href="<c:url value='/user/userReg'/>">∑Œ±◊¿Œ</a>
+                  <a class="button button-primary button-winona"  href="<c:url value='/user/userReg'/>">»∏ø¯∞°¿‘</a>
                   </div>
                 </div>
               </div>
@@ -67,33 +68,33 @@
                     </form>
                   </div>
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Ìôà</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">»®</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">ÎèÑÏÑúÍ¥Ä Ï†ïÎ≥¥</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">µµº≠∞¸ ¡§∫∏</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item">
                         <a class="rd-dropdown-link" href="<c:url value='/libraryInfo/libraryMap'/>">
-                        ÎèÑÏÑúÍ¥Ä Ï†ïÎ≥¥
+                        µµº≠∞¸ ¡§∫∏
                         </a>
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">ÎèÑÏÑú Î¶¨Î∑∞</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">µµº≠ ∏Æ∫‰</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="single-service.html">Single Service</a>
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">ÎèÑÏÑú Ï†ïÎ≥¥</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">µµº≠ ¡§∫∏</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item">
                         <a class="rd-dropdown-link" href="<c:url value='/bookSearch/bookSearch'/>">
-                        	ÎèÑÏÑú Í≤ÄÏÉâ
+                        	µµº≠ ∞Àªˆ
                         </a>
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">Îû≠ÌÇπ Ïù¥Î≤§Ìä∏</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">∑©≈∑ ¿Ã∫•∆Æ</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-gallery.html">Grid Gallery</a>
                         </li>
@@ -103,11 +104,11 @@
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">ÌÜ†Î°†Î™®ÏûÑ</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">≈‰∑–∏¿”</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item">
                         <a class="rd-dropdown-link" href="<c:url value='/bookChat/nonfaceDebateCollect'/>">
-                        Ïò§Ìîà ÌÜ†Î°†Î∞©
+                        ø¿«¬ ≈‰∑–πÊ
                         </a>
                         </li>
                       </ul>
@@ -119,61 +120,110 @@
           </nav>
         </div>
       </header>
-      <!-- Slider Light-->
-      <section class="swiper-container swiper-slider swiper-slider-light bg-image-1" data-loop="false" data-autoplay="false" data-simulate-touch="false" data-custom-slide-effect="inter-leave-effect" data-inter-leave-offset="-.5">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              <div class="container">
-                <div class="swiper-slide-caption">
-                  <div class="row row-30">
-                    <div class="col-lg-6 text-center text-lg-left">
-                      <h1><span class="font-weight-light"><span></span></span><span class="font-weight-bold"><span>Look Their Best</span></span></h1>
-                      <div class="button-outer"><a class="button button-lg button-primary button-winona" href="#">Discussion</a></div>
-                    </div>
-                    <div class="col-lg-6 position-static">
-                      <div class="floating-image" style="background-image: url(/resources/images/main/main.png);"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              <div class="container">
-                <div class="swiper-slide-caption">
-                  <div class="row row-30">
-                    <div class="col-lg-6 text-center text-lg-left">
-                      <h1><span class="font-weight-light"><span></span></span><span class="font-weight-bold"><span>For Your Sensibility</span></span></h1>
-                      <div class="button-outer"><a class="button button-lg button-primary button-winona" href="#">Free Review</a></div>
-                    </div>
-                    <div class="col-lg-6 position-static">
-                      <div class="floating-image" style="background-image: url(/resources/images/main/main2.png);"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination-outer container">
-          <div class="swiper-pagination swiper-pagination-modern swiper-pagination-marked" data-index-bullet="true"></div>
-        </div>
-      </section>
-      <!-- Page Footer-->
+
+		
+		<section class="breadcrumbs-custom bg-image"
+			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
+			<div class="breadcrumbs-custom-inner">
+				<div class="breadcrumbs-custom-container container">
+					<div class="breadcrumbs-custom-main">
+						<h6 class="breadcrumbs-custom-subtitle title-decorated">¡¶∏Ò πÃ¡§</h6>
+						<h1 class="breadcrumbs-custom-title">¡¶∏Ò πÃ¡§</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+<section class="section section-lg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 col-md-9 col-lg-6 col-xl-5">
+						<h6>sign up & sign in</h6>
+						<!-- Bootstrap tabs -->
+						<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
+							<!-- Nav tabs-->
+							<ul class="nav nav-tabs">
+								<li class="nav-item active" role="presentation"><a
+									class="nav-link active" href="#tabs-1-1" data-toggle="tab">»∏ø¯∞°¿‘</a></li>
+								<li class="nav-item" role="presentation"><a
+									class="nav-link" href="#tabs-1-2" data-toggle="tab">∑Œ±◊¿Œ</a></li>
+							</ul>
+							<br>
+							<br>
+							<div class="tab-content">
+								<div class="tab-pane fade show active in" id="tabs-1-1">
+								<form class="usrJoinForm" name="usrJoinForm" id="usrJoinForm" method="post">
+									<label class="form-label-outside">æ∆¿Ãµ</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="øµπÆ¿⁄ ∂«¥¬ º˝¿⁄ 6~20¿⁄∏Æ ¡∂«’"> 
+									<span id="idCheck"></span>
+									<br>
+										
+									<label class="form-label-outside">∫Òπ–π¯»£</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="øµπÆ¿⁄+º˝¿⁄+∆ØºˆπÆ¿⁄ 8~16¿⁄∏Æ ¡∂«’">
+									<span id="pwCheck"></span>
+									<br >
+									
+									<label class="form-label-outside">∫Òπ–π¯»£ »Æ¿Œ</label> 
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="passwordCheck" name="passwordCheck" placeholder="∫Òπ–π¯»£∏¶ »Æ¿Œ«ÿ¡÷ººø‰."> <br>
+									<!-- <label class="form-label-outside">¿Ã∏ß</label> 
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" placeholder="∞¯πÈæ¯¿Ã ¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰."> <br> -->
+										
+										
+									<!-- <label class="form-label-outside">π›∑¡µøπ∞ ¿Ã∏ß</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" placeholder="«‘≤≤«œ¥¬ π›∑¡µøπ∞ ¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰."> <br> -->
+									
+									<label class="form-label-outside">¥–≥◊¿”</label>									
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="nickName" name="nickName" placeholder="ªÁøÎ«“ ¥–≥◊¿”¿ª ¿‘∑¬«ÿ¡÷ººø‰.">
+									<span id="nickNameCheck"></span>
+									
+								</form>
+									<div class="button button-sm button-primary button-winona" id="joinBtn">
+										<a class="content-original">SIGN UP</a>
+										<%-- <a href="${path}/joinSuccess.do" class="content-dubbed" id="joinBtn">»∏ø¯∞°¿‘</a> --%>
+										<a class="content-dubbed">»∏ø¯∞°¿‘</a>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tabs-1-2">
+								<form class="usrLoginForm" name="usrLoginForm" id="usrLoginForm" method="post">
+									<label class="form-label-outside">æ∆¿Ãµ</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="∑Œ±◊¿Œ æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ¡÷ººø‰."> <br>
+									
+									<label class="form-label-outside">∫Òπ–π¯»£</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰."> <br>
+								</form>	
+									<div class="button button-sm button-primary button-winona" onclick="javascript:userFunction.userLogin();">
+										<a class="content-original">SIGN IN</a>
+										<a class="content-dubbed">∑Œ±◊¿Œ</a>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+
+
+ <!-- Page Footer-->
             <footer class="section footer-advanced bg-gray-dark">
               <div class="footer-advanced-aside">
                 <div class="container">
                   <div class="footer-advanced-layout">
                     <div>
                       <ul class="list-nav"> 
-                        <li><a href="/">Ìôà</a></li>
-                        <li><a href="">ÎèÑÏÑúÍ¥Ä Ï†ïÎ≥¥</a></li>
-                        <li><a href="">ÎèÑÏÑúÎ¶¨Î∑∞</a></li>
-                        <li><a href="">ÎèÑÏÑúÏ†ïÎ≥¥</a></li>
-                        <li><a href="">Îû≠ÌÇπÎ≥¥Í∏∞</a></li>
-                        <li><a href="">ÌÜ†Î°†Î™®ÏûÑ</a></li>
+                        <li><a href="/">»®</a></li>
+                        <li><a href="">µµº≠∞¸ ¡§∫∏</a></li>
+                        <li><a href="">µµº≠∏Æ∫‰</a></li>
+                        <li><a href="">µµº≠¡§∫∏</a></li>
+                        <li><a href="">∑©≈∑∫∏±‚</a></li>
+                        <li><a href="">≈‰∑–∏¿”</a></li>
                       </ul>
                     </div>
                     <div>
@@ -208,3 +258,4 @@
     <script src="/resources/js/script.js"></script>
   </body>
 </html>
+
