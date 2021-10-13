@@ -7,12 +7,11 @@
 <table class="table table-hover table-job-positions text-center">
 <thead class="thead_top">
 	<tr>
-		<th>글번호</th> <!-- 글번호 -->
-		<th>제목</th> <!-- 제목 -->
-		<th>개설일</th> <!-- 작성일자 -->
-		<th>마감일</th> <!-- 작성일자 -->
-		<th>모집인원</th> <!-- 작성일자 -->
-		<th>참여인원</th> <!-- 작성일자 -->
+		<th>글번호</th>
+		<th>제목</th>
+		<th>개설일</th>
+		<th>마감일</th>
+		<th>참여인원/모집인원</th>
 		<th>작성자</th>
 	</tr>
 </thead>	
@@ -22,9 +21,8 @@
 			<td><a href="/bookChat/nonfaceDebateCollectDetail?no=${item.debatecolSeq}">${item.debateTitle }</a></td>
 			<td><fmt:formatDate value="${item.openDate }" type="date" /></td>
 			<td><fmt:formatDate value="${item.fromDate }" type="date" /></td>
-			<td>${item.colPers }</td>
-			<td>${item.partPers }</td>
-			<td>ㅇㅇㅇ</td>
+			<td>${item.partPers } / ${item.colPers }</td>
+			<td>${item.userId }</td>
 		</tr>
 	</c:forEach>
 	<c:if test="${empty list }">
@@ -33,6 +31,8 @@
 		<tr>
 	</c:if>
 </table>
+
+<a href="/bookChat/nonfaceDebateCollectWrite"><button>글쓰기</button></a>
 </div>
 </div>
 </div>

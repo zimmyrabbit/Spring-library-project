@@ -6,7 +6,27 @@
 <mapper namespace="com.spring.library.dao.BookChatDao">
     
 	<select id="selectNonfaceDebateCollectList" resultType="java.util.HashMap">
-		SELECT * FROM nonfacedebatecollect
+		SELECT n.debatecolSeq, n.debateTitle, n.fromDate, n.colPers, n.partPers, n.openDate, u.userId
+		FROM nonfacedebatecollect n, userinfo u
+		WHERE n.userSeq = u.userSeq
+		ORDER BY n.debatecolSeq DESC
 	</select>
+	
+	<select id="selectNonfaceDebateCollectDetail" resultType="java.util.HashMap" parameterType="int">
+		SELECT n.debatecolSeq, n.debateTitle, n.fromDate, n.colPers, n.partPers, n.openDate, n.debateCon, u.userId
+		FROM nonfacedebatecollect n, userinfo u
+		WHERE n.userSeq = u.userSeq
+		AND n.debatecolSeq = #{no}
+	</select>
+	
+	<insert id="insertNonfaceDebateCollectWrite" parameterType="java.util.HashMap">
+		INSERT INTO nonfacedebatecollect(userSeq, debateTitle, fromDate, colPers, debateCon)
+		VALUES (#{userSeq}, #{debateTitle}, #{fromDate}, #{colPers}, #{debateCon})
+	</insert>
+	
+	<delete id="deleteNonfaceDebateCollectDelete" parameterType="int">
+		DELETE FROM nonfacedebatecollect
+		WHERE debatecolSeq = #{no}
+	</delete>
      
 </mapper>
