@@ -175,8 +175,7 @@
 									
 									<label class="form-label-outside">닉네임</label>									
 									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="nickName" name="nickName" placeholder="사용할 닉네임을 입력해주세요.">
-									<span id="nickNameCheck"></span>
-									
+									<span id="nickNameCheck"></span>									
 								</form>
 									<div class="button button-sm button-primary button-winona" id="joinBtn">
 										<a class="content-original">SIGN UP</a>
