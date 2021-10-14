@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
+  
     <title>Home</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
@@ -19,7 +19,6 @@
   </head>
   
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-  
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="/resources/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
@@ -49,8 +48,14 @@
                 <div class="rd-navbar-collapse">
                   <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content"><span></span></button>
                   <div class="rd-navbar-collapse-content" id="rd-navbar-collapse-content">
-                  <a class="button button-primary-outline button-winona" href="<c:url value='/user/userReg'/>">로그인</a>
-                  <a class="button button-primary button-winona" href="<c:url value='/user/userReg'/>">회원가입</a>
+                  <c:if test="${empty loginSession }">
+       		           <a class="button button-primary-outline button-winona" href="<c:url value='/user/userReg'/>?btn=login">로그인</a>
+             		   <a class="button button-primary button-winona" href="<c:url value='/user/userReg'/>?btn=join">회원가입</a>
+                  </c:if>
+                  <c:if test="${not empty loginSession }">
+       		           <a class="button button-primary-outline button-winona" href="#">마이페이지</a>
+             		   <a class="button button-primary button-winona" href="<c:url value='/user/logout.do'/>">로그아웃</a>
+                  </c:if>
                   </div>
                 </div>
               </div>
@@ -71,7 +76,7 @@
                     </form>
                   </div>
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">홈</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="/">홈</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="#">도서관 정보</a>
                       <ul class="rd-menu rd-navbar-dropdown">

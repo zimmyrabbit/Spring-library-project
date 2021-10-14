@@ -1,134 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/views/layout/header.jsp" %>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
-
-<!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
-  <head>
-    <title>Home</title>
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <link rel="icon" href="/resources/images/favicon.ico" type="image/x-icon">
-    <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Work+Sans:300,700,800%7COswald:300,400,500">
-    <link rel="stylesheet" href="/resources/css/style.css">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-  </head>
-  <body>
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="/resources/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <div class="preloader">
-      <div class="preloader-logo"><img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="83" height="22"/>
-      </div>
-      <div class="preloader-body">
-        <div id="loadingProgressG">
-          <div class="loadingProgressG" id="loadingProgressG_1"></div>
-        </div>
-      </div>
-    </div>
-    <div class="page">
-      <!-- Page Header-->
-      <header class="section page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="118px" data-xl-stick-up-offset="118px" data-xxl-stick-up-offset="118px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
-            <div class="rd-navbar-aside-outer">
-              <div class="rd-navbar-aside">
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <!-- RD Navbar Toggle-->
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="/">
-                  <img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="83" height="22"/></a>
-                </div>
-                <div class="rd-navbar-collapse">
-                  <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content"><span></span></button>
-                  <div class="rd-navbar-collapse-content" id="rd-navbar-collapse-content">
-                  <a class="button button-primary-outline button-winona"  href="<c:url value='/user/userReg'/>">·Î±×ÀÎ</a>
-                  <a class="button button-primary button-winona"  href="<c:url value='/user/userReg'/>">È¸¿ø°¡ÀÔ</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-                <div class="rd-navbar-nav-wrap" id="rd-navbar-nav-wrap">
-                  <!-- RD Navbar Search-->
-                  <div class="rd-navbar-search" id="rd-navbar-search">
-                    <button class="rd-navbar-search-toggle" data-rd-navbar-toggle="#rd-navbar-search"><span></span></button>
-                    <form class="rd-search" action="search-results.html" data-search-live="rd-search-results-live" method="GET">
-                      <div class="form-wrap">
-                        <label class="form-label" for="rd-navbar-search-form-input">Search...</label>
-                        <input class="form-input rd-navbar-search-form-input" id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off">
-                        <div class="rd-search-results-live" id="rd-search-results-live"></div>
-                      </div>
-                      <button class="rd-search-form-submit fa-search" type="submit"></button>
-                    </form>
-                  </div>
-                  <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">È¨</a>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">µµ¼­°ü Á¤º¸</a>
-                      <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item">
-                        <a class="rd-dropdown-link" href="<c:url value='/libraryInfo/libraryMap'/>">
-                        µµ¼­°ü Á¤º¸
-                        </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">µµ¼­ ¸®ºä</a>
-                      <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="single-service.html">Single Service</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">µµ¼­ Á¤º¸</a>
-                      <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item">
-                        <a class="rd-dropdown-link" href="<c:url value='/bookSearch/bookSearch'/>">
-                        	µµ¼­ °Ë»ö
-                        </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">·©Å· ÀÌº¥Æ®</a>
-                      <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-gallery.html">Grid Gallery</a>
-                        </li>
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="masonry-gallery.html">Masonry Gallery</a>
-                        </li>
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="modern-gallery.html">Modern Gallery</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">Åä·Ğ¸ğÀÓ</a>
-                      <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item">
-                        <a class="rd-dropdown-link" href="<c:url value='/bookChat/nonfaceDebateCollect'/>">
-                        ¿ÀÇÂ Åä·Ğ¹æ
-                        </a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
 		
 		<section class="breadcrumbs-custom bg-image"
 			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">Á¦¸ñ ¹ÌÁ¤</h6>
-						<h1 class="breadcrumbs-custom-title">Á¦¸ñ ¹ÌÁ¤</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated">ì œëª© ë¯¸ì •</h6>
+						<h1 class="breadcrumbs-custom-title">ì œëª© ë¯¸ì •</h1>
 					</div>
 				</div>
 			</div>
@@ -145,55 +26,49 @@
 							<!-- Nav tabs-->
 							<ul class="nav nav-tabs">
 								<li class="nav-item active" role="presentation"><a
-									class="nav-link active" href="#tabs-1-1" data-toggle="tab">È¸¿ø°¡ÀÔ</a></li>
+									class="nav-link active" href="#tabs-1-1" data-toggle="tab">íšŒì›ê°€ì…</a></li>
 								<li class="nav-item" role="presentation"><a
-									class="nav-link" href="#tabs-1-2" data-toggle="tab">·Î±×ÀÎ</a></li>
+									class="nav-link" href="#tabs-1-2" data-toggle="tab">ë¡œê·¸ì¸</a></li>
 							</ul>
 							<br>
 							<br>
 							<div class="tab-content">
 								<div class="tab-pane fade show active in" id="tabs-1-1">
 								<form class="usrJoinForm" name="usrJoinForm" id="usrJoinForm" method="post">
-									<label class="form-label-outside">¾ÆÀÌµğ</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="¿µ¹®ÀÚ ¶Ç´Â ¼ıÀÚ 6~20ÀÚ¸® Á¶ÇÕ"> 
+									<label class="form-label-outside">ì•„ì´ë””</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="ì˜ë¬¸ì ë˜ëŠ” ìˆ«ì 6~20ìë¦¬ ì¡°í•©"> 
 									<span id="idCheck"></span>
 									<br>
 										
-									<label class="form-label-outside">ºñ¹Ğ¹øÈ£</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="¿µ¹®ÀÚ+¼ıÀÚ+Æ¯¼ö¹®ÀÚ 8~16ÀÚ¸® Á¶ÇÕ">
+									<label class="form-label-outside">ë¹„ë°€ë²ˆí˜¸</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="ì˜ë¬¸ì+ìˆ«ì+íŠ¹ìˆ˜ë¬¸ì 8~16ìë¦¬ ì¡°í•©">
 									<span id="pwCheck"></span>
 									<br >
 									
-									<label class="form-label-outside">ºñ¹Ğ¹øÈ£ È®ÀÎ</label> 
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="passwordCheck" name="passwordCheck" placeholder="ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä."> <br>
-									<!-- <label class="form-label-outside">ÀÌ¸§</label> 
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" placeholder="°ø¹é¾øÀÌ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä."> <br> -->
-										
-										
-									<!-- <label class="form-label-outside">¹İ·Áµ¿¹° ÀÌ¸§</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" placeholder="ÇÔ²²ÇÏ´Â ¹İ·Áµ¿¹° ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä."> <br> -->
+									<label class="form-label-outside">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</label> 
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="passwordCheck" name="passwordCheck" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”."> <br>
 									
-									<label class="form-label-outside">´Ğ³×ÀÓ</label>									
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="nickName" name="nickName" placeholder="»ç¿ëÇÒ ´Ğ³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.">
-									<span id="nickNameCheck"></span>									
+									<label class="form-label-outside">ì´ë¦„</label>									
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="userName" name="userName" placeholder="ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.">
+									<span id="nameCheck"></span>									
 								</form>
 									<div class="button button-sm button-primary button-winona" id="joinBtn">
 										<a class="content-original">SIGN UP</a>
-										<%-- <a href="${path}/joinSuccess.do" class="content-dubbed" id="joinBtn">È¸¿ø°¡ÀÔ</a> --%>
-										<a class="content-dubbed">È¸¿ø°¡ÀÔ</a>
+										<%-- <a href="${path}/joinSuccess.do" class="content-dubbed" id="joinBtn">íšŒì›ê°€ì…</a> --%>
+										<a class="content-dubbed">íšŒì›ê°€ì…</a>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="tabs-1-2">
 								<form class="usrLoginForm" name="usrLoginForm" id="usrLoginForm" method="post">
-									<label class="form-label-outside">¾ÆÀÌµğ</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="·Î±×ÀÎ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä."> <br>
+									<label class="form-label-outside">ì•„ì´ë””</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" placeholder="ë¡œê·¸ì¸ ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”."> <br>
 									
-									<label class="form-label-outside">ºñ¹Ğ¹øÈ£</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä."> <br>
+									<label class="form-label-outside">ë¹„ë°€ë²ˆí˜¸</label>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”."> <br>
 								</form>	
 									<div class="button button-sm button-primary button-winona" onclick="javascript:userFunction.userLogin();">
 										<a class="content-original">SIGN IN</a>
-										<a class="content-dubbed">·Î±×ÀÎ</a>
+										<a class="content-dubbed">ë¡œê·¸ì¸</a>
 									</div>	
 								</div>
 							</div>
@@ -203,58 +78,182 @@
 			</div>
 		</section>
 
+<script>
+
+$(document).ready(function() {
+
+	userFunction = new userFunction(); 
+
+	$('#id').blur(function(){
+		userFunction.userIdCheck();
+	});	
+
+	$('#passwordCheck').blur(function() {
+		userFunction.userPwCheck();
+	});
+	
+	$('#userName').blur(function() {
+		userFunction.userNameCheck();
+	});
+		
+	$('#joinBtn').click(function(){
+		userFunction.userFinalCheck();
+	});	
+	
+});
 
 
+function userFunction() {
+	var idFlag = false;
+	var pwFlag = false;
+
+	this.userJoin = function() {
+
+		let url = "<c:url value='/user/joinSuccess.do'/>";
+		let formData = $("#usrJoinForm");
+		
+		$.ajax({
+			type : 'POST',
+			url : url,
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType : "json",
+			data : formData.serialize(),
+			async : false,
+			success : function(data) {
+				alert('ê°€ì…ëœ ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ì„ í•´ì£¼ì„¸ìš”.');
+				location.replace("<c:url value='/user/userReg'/>"); 
+ 			},
+			error : function(xhr, status, error) {
+				alert('ì˜ˆê¸°ì¹˜ ëª»í•œ ì—ëŸ¬ ë°œìƒ');
+			}
+		});
+	};
+
+	
+	// ì•„ì´ë”” ì •ê·œì‹, ì¤‘ë³µí™•ì¸
+	this.userIdCheck = function() {
+
+		let url = "<c:url value='${path}/user/joinIdCheck.do'/>";
+		let regexIdPatternCheck = /^[a-zA-Z0-9]{6,20}$/;
+		let id = $('#id').val();
+		
+		if(!regexIdPatternCheck.test(id) ) {
+            document.getElementById('idCheck').innerHTML='ì˜ë¬¸ ë˜ëŠ” ìˆ«ì 6~20ì ì¡°í•©<br>'
+	        document.getElementById('idCheck').style.color='red';
+	        return false;		
+		}
+	        $.ajax({
+		     type:"POST",
+		     url:url,
+			 contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			 dataType : "json",		     
+		     data:{
+		            "id" : id
+		     },
+		     success:function(data){	
+		            if(data.data == "SUCCESS" && $('#id').val() != ''){
+	                    document.getElementById('idCheck').innerHTML='ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.<br>'
+	                    document.getElementById('idCheck').style.color='blue';
+	                    idFlag = true;
+		               } else if(data.data == "EXIST" && $('#id').val() != ''){
+		                  document.getElementById('idCheck').innerHTML='ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤.<br>'
+			              document.getElementById('idCheck').style.color='red';	
+		                  $('#id').val('');
+		                  $('#id').focus();
+		                  idFlag = false;
+		            }
+		     	}
+		    });
+		};
+	
+	// ë¹„ë°€ë²ˆí˜¸ í™•ì¸ , ì •ê·œì‹
+	this.userPwCheck = function() {
+
+		let regexPwPatternCheck = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;	//ì˜ë¬¸ì+ìˆ«ì+íŠ¹ìˆ˜ë¬¸ì 8ìë¦¬ì´ìƒ
+		let password = $('#password').val();
+		let passwordCheck = $('#passwordCheck').val();
+
+		if(password.length < 7 || password == passwordCheck) {
+			if(!regexPwPatternCheck.test(passwordCheck)) {
+                document.getElementById('pwCheck').innerHTML='ì˜ë¬¸ì+ìˆ«ì+íŠ¹ìˆ˜ë¬¸ì 8~16ì ì¡°í•©<br>'
+		        document.getElementById('pwCheck').style.color='red';
+		        pwFlag = false;
+
+			}else {
+                document.getElementById('pwCheck').innerHTML='ì‚¬ìš©ê°€ëŠ¥í•œ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤.<br>'
+    		    document.getElementById('pwCheck').style.color='blue';
+    		    pwFlag = true;
+			}	
+		}else {
+            document.getElementById('pwCheck').innerHTML='ì˜ë¬¸ì+ìˆ«ì+íŠ¹ìˆ˜ë¬¸ì 8~16ì ì¡°í•©<br>'
+		    document.getElementById('pwCheck').style.color='red';
+            pwFlag = false;
+		}
+	};
+
+	//ì „ì²´ ì²´í¬
+	this.userFinalCheck = function() {
+		
+		let frmArr = ["id", "password", "passwordCheck", "userName"];
+		let regexIdPatternCheck = /^[a-zA-Z0-9]{6,20}$/;
+		let regexPwPatternCheck = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;	//ì˜ë¬¸ì+ìˆ«ì+íŠ¹ìˆ˜ë¬¸ì 8ìë¦¬ì´ìƒ
+		let id = $('#id').val();
+		let password = $('#password').val();
+		let passwordCheck = $('#passwordCheck').val();
+		let userName = $('#userName').val();
+		//ì…ë ¥ ê°’ ë„ ì²´í¬
+		for(var i=0;i<frmArr.length;i++){
+			//alert(arr[i]);
+			if($.trim($('#'+frmArr[i]).val()) == ''){
+				alert('ë¹ˆ ì¹¸ì„ ëª¨ë‘ ì…ë ¥í•´ ì£¼ì„¸ìš”.');
+				$('#'+frmArr[i]).focus();
+				return false;
+			}
+		}
+		
+		if(!regexIdPatternCheck.test(id) || !idFlag) {
+            alert('ì•„ì´ë””ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.');
+            $('#id').focus();
+	        return false;		
+		}
+		if(password != passwordCheck || !regexPwPatternCheck.test(passwordCheck) || !pwFlag) {
+			alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.');
+			$('#password').focus();
+			return false;
+		}
+		if(userName.length > 20) {
+			alert('ì´ë¦„ì„ í™•ì¸í•´ì£¼ì„¸ìš”.');
+			$('#userName').focus();
+			return false;
+		}
+		userFunction.userJoin();
+	};	
+
+	this.userLogin = function() {
+
+		let url = "<c:url value='/user/loginSuccess.do'/>";
+		let formData = $("#usrLoginForm");
+		
+		$.ajax({
+			type : 'POST',
+			url : url,
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			data : formData.serialize(), 
+			success : function(data) {
+				if(data.data == "SUCCESS") {
+					location.href = "/";
+				}else if(data.data == "FAIL"){
+					alert('ê³„ì • ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤');
+				}
+			},
+			error : function(xhr, status, error) {
+				alert('ì˜ˆê¸°ì¹˜ ëª»í•œ ì—ëŸ¬ ë°œìƒ:ê³ ê°ì„¼í„° ë¬¸ì˜');
+			}
+		});
+	};		
+}
 
 
+</script>
 
-
-
- <!-- Page Footer-->
-            <footer class="section footer-advanced bg-gray-dark">
-              <div class="footer-advanced-aside">
-                <div class="container">
-                  <div class="footer-advanced-layout">
-                    <div>
-                      <ul class="list-nav"> 
-                        <li><a href="/">È¨</a></li>
-                        <li><a href="">µµ¼­°ü Á¤º¸</a></li>
-                        <li><a href="">µµ¼­¸®ºä</a></li>
-                        <li><a href="">µµ¼­Á¤º¸</a></li>
-                        <li><a href="">·©Å·º¸±â</a></li>
-                        <li><a href="">Åä·Ğ¸ğÀÓ</a></li>
-                      </ul>
-                    </div>
-                    <div>
-                      <ul class="list-inline list-inline-md">
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-facebook" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-twitter" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-instagram" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-google" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-linkedin" href="#"></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="container">
-                <hr>
-              </div>
-              <div class="footer-advanced-aside">
-                <div class="container">
-                  <div class="footer-advanced-layout"><a class="brand" href="index.html"><img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="167" height="44"/></a>
-                    <!-- Rights-->
-                    <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>All Rights Reserved.</span><span>&nbsp;</span><br class="d-sm-none"/><a href="privacy-policy.html">Privacy Policy</a></p>
-                  </div>
-                </div>
-              </div>
-            </footer>
-    </div>
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="/resources/js/core.min.js"></script>
-    <script src="/resources/js/script.js"></script>
-  </body>
-</html>
-
+<%@ include file="/WEB-INF/views/layout/footer.jsp" %>
