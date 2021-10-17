@@ -8,22 +8,13 @@
                     <div>
                       <ul class="list-nav"> 
                         <li><a href="/">홈</a></li>
-                        <li><a href="">도서관 정보</a></li>
-                        <li><a href="">도서리뷰</a></li>
-                        <li><a href="">도서정보</a></li>
-                        <li><a href="">랭킹보기</a></li>
-                        <li><a href="">토론모임</a></li>
+                        <li><a href="<c:url value='/libraryInfo/libraryMap'/>">도서관 정보</a></li>
+                        <li><a href="<c:url value='/bookReview/reviewList'/>">도서리뷰</a></li>
+                        <li><a href="<c:url value='/bookSearch/bookSearch'/>">도서정보</a></li>
+                        <li><a href="/bookReview/reviewRank">랭킹보기</a></li>
+                        <li><a href="<c:url value='/bookChat/nonfaceDebateCollect'/>">토론모임</a></li>
                       </ul>
                     </div>
-                    <div>
-                      <ul class="list-inline list-inline-md">
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-facebook" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-twitter" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-instagram" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-google" href="#"></a></li>
-                        <li><a class="icon icon-sm link-gray-light mdi mdi-linkedin" href="#"></a></li>
-                      </ul>
-                    </div> 
                   </div>
                 </div>
               </div>

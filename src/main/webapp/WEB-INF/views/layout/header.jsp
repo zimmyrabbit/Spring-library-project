@@ -87,7 +87,7 @@
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">도서 리뷰</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">도서 리뷰</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="<c:url value='/bookReview/reviewList'/>">도서 리뷰</a>
                         </li>
