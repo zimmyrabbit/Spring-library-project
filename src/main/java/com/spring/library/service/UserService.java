@@ -24,4 +24,12 @@ public class UserService {
 	public Map<String, String> userLogin(Map<String, String> args) {
 		return userDao.userLogin(args);
 	}
+	
+	public int userUpdate(Map<String, String> args) {
+		return userDao.userUpdate(args);
+	}
+	
+	public int userPassWDupdate(Map<String, String> args) {
+		return userDao.userPassWDupdate(args);
+	}
 }

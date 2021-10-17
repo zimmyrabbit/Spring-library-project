@@ -10,4 +10,7 @@ public interface UserDao {
 	
 	public Map<String, String> userLogin(Map<String, String> args);
 
+	public int userUpdate(Map<String, String> args);
+	
+	public int userPassWDupdate(Map<String, String> args);
 }

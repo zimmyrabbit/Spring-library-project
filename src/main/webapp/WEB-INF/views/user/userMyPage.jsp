@@ -37,37 +37,39 @@
 							<br>
 							<div class="tab-content">
 								<div class="tab-pane fade show active in" id="tabs-1-1">
-								<form class="usrJoinForm" name="usrJoinForm" id="usrJoinForm" method="post">
+								<form class="usrUpdateForm" name="usrUpdateForm" id="usrUpdateForm" method="post">
 									<label class="form-label-outside">아이디</label>
+									<input type="hidden" class="userId_seq_cur" name="userId_seq" value="">
 									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="id" name="id" readonly="readonly" value="${ sessionScope.loginSession.userId }"> 
 									<span id="idCheck"></span>
 									<br>
 										
 									<label class="form-label-outside">현재 비밀번호</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="현재 비밀번호를 입력해주세요.">
-									<span id="pwCheck"></span>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password_cur" name="password_cur" placeholder="현재 비밀번호를 입력해주세요.">
 									<br >
 									
 									<label class="form-label-outside">변경할 이름</label>									
-									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="userName" name="userName" readonly="readonly" value="${ sessionScope.loginSession.userName}">
+									<input class="form-input form-control-has-validation form-control-last-child" type="text" id="userName" name="userName" placeholder="변경할 이름을 입력해주세요.">
 									<span id="nameCheck"></span>									
 								</form>
-									<div class="button button-sm button-primary button-winona" id="joinBtn">
+									<div class="button button-sm button-primary button-winona" id="updateBtn">
 										<a class="content-original">UPDATE</a>
 										<%-- <a href="${path}/joinSuccess.do" class="content-dubbed" id="joinBtn">회원가입</a> --%>
 										<a class="content-dubbed">수정하기</a>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="tabs-1-2">
-								<form class="usrLoginForm" name="usrLoginForm" id="usrLoginForm" method="post">
+								<form class="usrPasswordForm" name="usrPasswordForm" id="usrPasswordForm" method="post">
+									<input type="hidden" class="userId_seq" name="userId_seq" value="">
 									<label class="form-label-outside">현재 비밀번호</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password" name="password" placeholder="현재 비밀번호를 입력해주세요."> <br>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password2" name="password" placeholder="현재 비밀번호를 입력해주세요."> <br>
 									<label class="form-label-outside">변경할 비밀번호</label>
 									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password_update" name="password_update" placeholder="영문자+숫자+특수문자 8~16자리 조합"> <br>
 									<label class="form-label-outside">변경할 비밀번호 확인</label>
-									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password_update2" placeholder="변경할 비밀번호를 입력해주세요."> <br>
+									<input class="form-input form-control-has-validation form-control-last-child" type="password" id="password_update2" placeholder="변경할 비밀번호를 입력해주세요.">
+									<span id="pwCheck"></span>
 								</form>	
-									<div class="button button-sm button-primary button-winona" onclick="javascript:userFunction.userLogin();">
+									<div class="button button-sm button-primary button-winona" id="passwordBtn">
 										<a class="content-original">UPDATE</a>
 										<a class="content-dubbed">수정하기</a>
 									</div>	
@@ -109,6 +111,110 @@
 		
 		
 <script type="text/javascript">
+$('#updateBtn').click(function(){
+
+	if( $('#password_cur').val() == "" ) {
+		alert('비밀번호를 입력해주세요.');
+		return false;
+	}
+
+	if( $('#userName').val() == "" ) {
+		alert('변경할 이름을 입력해주세요.');
+		return false;
+	}	
+	
+	$('.userId_seq_cur').val('${sessionScope.loginSession.userSeq}');
+	let formData = $("#usrUpdateForm");
+	
+	$.ajax({
+		type : 'POST',
+		url : "<c:url value='/user/userUpdate'/>",
+		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType : "json",
+		data : formData.serialize(),
+		async : false,
+		success : function(data) {
+			if(data.proc == "success") {
+				alert('정상적으로 변경되었습니다.');
+			}else {
+				alert('비밀번호가 틀렸습니다.');
+			}
+		},
+		error : function(xhr, status, error) {
+			alert('예기치 못한 에러 발생');
+		}
+	});
+});	
+
+
+$('#passwordBtn').click(function(){
+
+	pwFlag = false;
+
+	if( $('#password2').val() == "" ) {
+		alert('비밀번호를 입력해주세요.');
+		return false;
+	}
+
+	if( $('#password_update').val() == "" ) {
+		alert('변경할 비밀번호를 입력해주세요.');
+		return false;
+	}	
+	if( $('#password_update2').val() == "" ) {
+		alert('변경할 비밀번호를 입력해주세요.');
+		return false;
+	}	
+
+	let regexPwPatternCheck = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;	//영문자+숫자+특수문자 8자리이상
+	let password = $('#password_update').val();
+	let passwordCheck = $('#password_update2').val();
+
+	if(password.length < 7 || password == passwordCheck) {
+		if(!regexPwPatternCheck.test(passwordCheck)) {
+            document.getElementById('pwCheck').innerHTML='영문자+숫자+특수문자 8~16자 조합<br>'
+	        document.getElementById('pwCheck').style.color='red';
+	        pwFlag = false;
+
+		}else {
+            document.getElementById('pwCheck').innerHTML='사용가능한 비밀번호입니다.<br>'
+		    document.getElementById('pwCheck').style.color='blue';
+		    pwFlag = true;
+		}	
+	}else {
+        document.getElementById('pwCheck').innerHTML='영문자+숫자+특수문자 8~16자 조합<br>'
+	    document.getElementById('pwCheck').style.color='red';
+        pwFlag = false;
+	}
+
+	if( !pwFlag) {
+		return false;
+	}else {
+	
+		$('.userId_seq').val('${sessionScope.loginSession.userSeq}');
+		let formData = $("#usrPasswordForm");
+
+		$.ajax({
+			type : 'POST',
+			url : "<c:url value='/user/userPassWDupdate'/>",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType : "json",
+			data : formData.serialize(),
+			async : false,
+			success : function(data) {
+				if(data.proc == "success") {
+					alert('정상적으로 변경되었습니다.');
+				}else {
+					alert('비밀번호가 틀렸습니다.');
+				}
+			},
+			error : function(xhr, status, error) {
+				alert('예기치 못한 에러 발생');
+			}
+		});
+	}
+	
+});	
+
 
 </script>		
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>

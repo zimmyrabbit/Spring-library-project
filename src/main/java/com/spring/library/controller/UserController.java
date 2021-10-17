@@ -114,4 +114,46 @@ public class UserController {
 	
 	@RequestMapping(value = "/user/userMyPage", method=RequestMethod.GET)
 	public void userMyPage(ModelMap model, HttpServletRequest request) throws Exception { }	
+	
+	
+	
+	@RequestMapping(value= "/user/userUpdate", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> userUpdate(@RequestParam Map<String, String> formData,
+			ModelMap model, HttpServletRequest request) throws Exception { 
+		
+		String password = (String) formData.get("password_cur");
+		formData.put("password", HashNMacUtil.EncBySha256(password));
+	
+		int result = userService.userUpdate(formData);
+		Map<String, String> map = new HashMap();
+		if(result == 1) {
+			map.put("proc", "success");
+		}else {
+			map.put("proc", "fail");
+		}
+		
+		return map;
+	}	
+	
+	@RequestMapping(value= "/user/userPassWDupdate", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> userPassWDupdate(@RequestParam Map<String, String> formData,
+			ModelMap model, HttpServletRequest request) throws Exception { 
+		
+		String password_update = (String) formData.get("password_update");
+		String password = (String) formData.get("password");
+		formData.put("password", HashNMacUtil.EncBySha256(password));
+		formData.put("password_update", HashNMacUtil.EncBySha256(password_update));
+
+		int result = userService.userPassWDupdate(formData);
+		
+		Map<String, String> map = new HashMap();
+		if(result == 1) {
+			map.put("proc", "success");
+		}else {
+			map.put("proc", "fail");
+		}
+		return map;
+	}	
 }
