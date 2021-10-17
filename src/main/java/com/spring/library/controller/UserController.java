@@ -111,4 +111,7 @@ public class UserController {
 		
 		return "redirect:/";
 	}	
+	
+	@RequestMapping(value = "/user/userMyPage", method=RequestMethod.GET)
+	public void userMyPage(ModelMap model, HttpServletRequest request) throws Exception { }	
 }
