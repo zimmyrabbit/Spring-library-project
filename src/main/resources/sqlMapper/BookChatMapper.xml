@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="selectNonfaceDebateCollectDetail" resultType="java.util.HashMap" parameterType="int">
-		SELECT n.debatecolSeq, n.debateTitle, n.fromDate, n.colPers, n.partPers, n.openDate, n.debateCon, u.userId
+		SELECT n.debatecolSeq, n.debateTitle, n.fromDate, n.colPers, n.partPers, n.openDate, n.debateCon, n.userSeq, u.userId
 		FROM nonfacedebatecollect n, userinfo u
 		WHERE n.userSeq = u.userSeq
 		AND n.debatecolSeq = #{no}

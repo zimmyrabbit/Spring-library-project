@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="userLogin" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT userId, userName FROM userinfo 
+		SELECT userId, userName, userSeq FROM userinfo 
 		 WHERE userId = #{id}
 		   AND userPw = #{password} 
 	</select>

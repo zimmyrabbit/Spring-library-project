@@ -81,11 +81,16 @@ public class UserController {
 			@RequestParam Map<String, String> formData) throws Exception {
 
 		String password = (String) formData.get("password");
+		
 		formData.put("password", HashNMacUtil.EncBySha256(password));
+		
 		Map<String, String> map = new HashMap<String, String>();
 		Map<String, String> result = new HashMap<String, String>();
+		
 		map = userService.userLogin(formData);
+		
 		HttpSession session = request.getSession(true);
+		
 		if (!StringUtils.isEmpty(map)) {
 			session.setAttribute("loginSession", map);
 			result.put("data", "SUCCESS");

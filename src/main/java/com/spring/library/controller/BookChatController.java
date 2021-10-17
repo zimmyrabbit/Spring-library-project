@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.library.service.BookChatService;
 
@@ -37,14 +39,16 @@ public class BookChatController {
 	}
 	
 	@RequestMapping(value="/bookChat/nonfaceDebateCollectWrite", method=RequestMethod.GET)
-	public void nonfaceDebateCollectWrite () {}
+	public void nonfaceDebateCollectWrite (HttpSession session) { }
 	
 	@RequestMapping(value="/bookChat/nonfaceDebateCollectWrite", method=RequestMethod.POST)
-	public String nonfaceDebateCollectWriteProc (HttpServletRequest request) {
+	public String nonfaceDebateCollectWriteProc (HttpServletRequest request, HttpSession session) {
+		
+		HashMap<String,Object> sessionInfo = (HashMap<String,Object>) session.getAttribute("loginSession");
 		
 		HashMap<String,Object> map = new HashMap<>();
 		
-		map.put("userSeq", 1);
+		map.put("userSeq", sessionInfo.get("userSeq"));
 		map.put("debateTitle", request.getParameter("debateTitle"));
 		map.put("colPers", request.getParameter("colPers"));
 		map.put("fromDate", request.getParameter("fromDate"));
@@ -61,5 +65,12 @@ public class BookChatController {
 		bookChatService.cutNonfaceDebateCollectDelete(no);
 		
 		return "redirect:/bookChat/nonfaceDebateCollect";
+	}
+	
+	@RequestMapping(value="/bookChat/joinDebate", method=RequestMethod.GET)
+	public @ResponseBody void joinDebate(HttpServletRequest request) {
+		System.out.println(request.getParameter("debateSeq"));
+		System.out.println(request.getParameter("userSeq"));
+		System.out.println(request.getParameter("userId"));
 	}
 }

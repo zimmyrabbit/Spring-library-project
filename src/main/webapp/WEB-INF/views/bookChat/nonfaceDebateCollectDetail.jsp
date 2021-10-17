@@ -13,7 +13,11 @@
 	</tr>
 	<tr>
 		<td colspan="2">개설일/마감일 : <fmt:formatDate value="${map.openDate }" type="date" /> / <fmt:formatDate value="${map.fromDate }" type="date" /></td>
-		<td>참여인원/모집인원 : ${map.partPers } / ${map.colPers }</td>
+		<td>참여인원/모집인원 : ${map.partPers } / ${map.colPers } 
+		<c:if test="${sessionScope.loginSession.userSeq ne map.userSeq}">
+		<button type="button" onclick="joinDebate()">참여하기</button>
+		</c:if>
+		</td>
 	</tr>
 </table>
 
@@ -28,5 +32,27 @@ ${map.debateCon }
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+function joinDebate() {
+	
+	var debateSeq = ${map.debatecolSeq};
+	var userSeq = ${sessionScope.loginSession.userSeq};
+	var userId = "${sessionScope.loginSession.userId}";
+	
+	$.ajax({
+		method : "get"
+		, url : "/bookChat/joinDebate"
+		, data : {"debateSeq" : debateSeq
+				, "userSeq" : userSeq
+				, "userId" : userId}
+		,success : function() {
+			
+		}
+	})
+}
+
+</script>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>
