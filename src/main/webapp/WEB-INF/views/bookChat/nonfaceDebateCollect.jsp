@@ -32,7 +32,6 @@
 	</c:if>
 </table>
 
-<a href="/bookChat/nonfaceDebateCollectWrite"><button>글쓰기</button></a>
 </div>
 </div>
 </div>

@@ -38,6 +38,37 @@ public class BookChatService {
 		
 		bookChatDao.deleteNonfaceDebateCollectDelete(no);
 	}
+
+	public void joinDebate(HashMap<String, Integer> map) {
+		
+		bookChatDao.updatePartPers(map);
+		if(getParticipationFlag(map.get("debateSeq"), map.get("userSeq"))) {
+			bookChatDao.updateStateZero(map);
+		} else {
+			bookChatDao.insertNonfaceDebate(map);
+		}
+	}
+
+	public int getPartPers(HashMap<String, Integer> map) {
+		int partPers = bookChatDao.selectPartPers(map);
+		return partPers;
+	}
+
+	public boolean getParticipationFlag(int no, int userSeq) {
+
+		int part = bookChatDao.selectParticipationFlag(no,userSeq);
+		
+		if(part > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void cancleDebate(HashMap<String, Integer> map) {
+		bookChatDao.minusPartPers(map);
+		bookChatDao.updateStateOne(map);
+	}
 	
 	
 }

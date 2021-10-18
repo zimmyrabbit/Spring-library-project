@@ -25,7 +25,8 @@ $("#search").click(function() {
 			for(var i=0; i<data.documents.length; i++) {
 				getBookList += "<div>"
 				getBookList += "<div>" + data.documents[i].title + "</div>"
-				getBookList += "<div> <img src='" + data.documents[i].thumbnail + "'/> </div>"
+				getBookList += "<div> <a href=" + data.documents[i].url +"><img src='" + data.documents[i].thumbnail + "'/></a> </div>"
+				getBookList += "<a href='/bookChat/nonfaceDebateCollectWrite?title=" + data.documents[i].title + "'><button>토론모집</button></a>"
 				getBookList += "</div>"
 			}
 			

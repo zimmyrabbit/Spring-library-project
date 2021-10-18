@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,15 +32,24 @@ public class BookChatController {
 	}
 	
 	@RequestMapping(value="/bookChat/nonfaceDebateCollectDetail", method=RequestMethod.GET)
-	public void nonfaceDebateCollectDetail (Model model, int no) {
+	public void nonfaceDebateCollectDetail (Model model, int no, HttpSession session) {
 		
 		HashMap<String, Object> map = bookChatService.getNonfaceDebateCollectDetail(no);
 		
+		HashMap<String,Object> sessionInfo = (HashMap<String,Object>) session.getAttribute("loginSession");
+		int userSeq = (int) sessionInfo.get("userSeq");
+		
+		boolean flag = bookChatService.getParticipationFlag(no, userSeq);
+		
 		model.addAttribute("map", map);
+		model.addAttribute("flag", flag);
 	}
 	
 	@RequestMapping(value="/bookChat/nonfaceDebateCollectWrite", method=RequestMethod.GET)
-	public void nonfaceDebateCollectWrite (HttpSession session) { }
+	public void nonfaceDebateCollectWrite (HttpServletRequest request, Model model) {
+		String title = request.getParameter("title");
+		model.addAttribute("title", title);
+	}
 	
 	@RequestMapping(value="/bookChat/nonfaceDebateCollectWrite", method=RequestMethod.POST)
 	public String nonfaceDebateCollectWriteProc (HttpServletRequest request, HttpSession session) {
@@ -68,9 +78,38 @@ public class BookChatController {
 	}
 	
 	@RequestMapping(value="/bookChat/joinDebate", method=RequestMethod.GET)
-	public @ResponseBody void joinDebate(HttpServletRequest request) {
-		System.out.println(request.getParameter("debateSeq"));
-		System.out.println(request.getParameter("userSeq"));
-		System.out.println(request.getParameter("userId"));
+	public @ResponseBody int joinDebate(HttpServletRequest request) {
+
+		HashMap<String, Integer> map = new HashMap<>();
+		
+		int debateSeq = Integer.parseInt(request.getParameter("debateSeq"));
+		int userSeq = Integer.parseInt(request.getParameter("userSeq"));
+		
+		map.put("debateSeq", debateSeq);
+		map.put("userSeq", userSeq);
+
+		bookChatService.joinDebate(map);
+		
+		int partPers = bookChatService.getPartPers(map);
+		
+		return partPers;
+	}
+	
+	@RequestMapping(value="/bookChat/cancleDebate", method=RequestMethod.GET)
+	public @ResponseBody int cancleDebate(HttpServletRequest request) {
+		
+		HashMap<String, Integer> map = new HashMap<>();
+		
+		int debateSeq = Integer.parseInt(request.getParameter("debateSeq"));
+		int userSeq = Integer.parseInt(request.getParameter("userSeq"));
+		
+		map.put("debateSeq", debateSeq);
+		map.put("userSeq", userSeq);
+		
+		bookChatService.cancleDebate(map);
+		
+		int partPers = bookChatService.getPartPers(map);
+		
+		return partPers;
 	}
 }

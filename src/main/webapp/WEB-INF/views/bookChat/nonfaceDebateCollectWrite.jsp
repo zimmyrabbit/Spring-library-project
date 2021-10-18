@@ -8,7 +8,7 @@
 <form action="/bookChat/nonfaceDebateCollectWrite" method="post">
 		<table>
 		<tr>
-			<td colspan="2"> <label for="title"> 제목 : <input type="text" id="debateTitle" name="debateTitle" /> </label> </td>
+			<td colspan="2"> <label for="title"> 제목 : <input type="text" id="debateTitle" name="debateTitle" value="${title}" readonly="readonly" /> </label> </td>
 		</tr>
 		<tr>
 			<td> <label for="colPers"> 모집인원 : <input type="number" id="colPers" name="colPers" /> </label> </td>
