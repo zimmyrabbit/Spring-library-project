@@ -1,5 +1,6 @@
 package com.spring.library.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class UserService {
 	
 	public Map<String, String> userLogin(Map<String, String> args) {
 		return userDao.userLogin(args);
+	}
+	
+	public List<Map<String, String>> userList() {
+		return userDao.userList();
 	}
 	
 	public int userUpdate(Map<String, String> args) {

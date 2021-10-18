@@ -2,6 +2,7 @@ package com.spring.library.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
@@ -113,7 +114,11 @@ public class UserController {
 	}	
 	
 	@RequestMapping(value = "/user/userMyPage", method=RequestMethod.GET)
-	public void userMyPage(ModelMap model, HttpServletRequest request) throws Exception { }	
+	public void userMyPage(ModelMap model, HttpServletRequest request) throws Exception { 
+		
+		List<Map<String, String>> list = userService.userList();
+		model.addAttribute("list", list);
+	}	
 	
 	
 	
@@ -134,7 +139,8 @@ public class UserController {
 		}
 		
 		return map;
-	}	
+	}
+	
 	
 	@RequestMapping(value= "/user/userPassWDupdate", method=RequestMethod.POST)
 	@ResponseBody
@@ -155,5 +161,23 @@ public class UserController {
 			map.put("proc", "fail");
 		}
 		return map;
-	}	
+	}
+	
+	@RequestMapping(value= "/user/adminPasswd", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> adminPasswd(@RequestParam Map<String, String> formData,
+			ModelMap model, HttpServletRequest request) throws Exception { 
+		
+		String password_update = (String) formData.get("password_update");
+		formData.put("password_update", HashNMacUtil.EncBySha256(password_update));
+		int result = userService.userPassWDupdate(formData);
+		
+		Map<String, String> map = new HashMap();
+		if(result == 1) {
+			map.put("proc", "success");
+		}else {
+			map.put("proc", "fail");
+		}
+		return map;
+	}
 }

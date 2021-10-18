@@ -20,6 +20,10 @@
 		 WHERE userId = #{id}
 		   AND userPw = #{password} 
 	</select>
+	
+	<select id="userList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT userId, userSeq, userName, userState, if(userState > 0 , '활동', '정지') as status FROM userinfo 
+	</select>
      
     <update id="userUpdate" parameterType="java.util.HashMap" >
     	UPDATE userinfo SET userName = #{ userName }
@@ -31,6 +35,8 @@
     <update id="userPassWDupdate" parameterType="java.util.HashMap" >
     	UPDATE userinfo SET userPw = #{ password_update }
     	 WHERE userSeq = #{userId_seq}
+    	 <if test="password != 'admin'">
     	   AND userPw = #{password}
+    	 </if>
     </update>     
 </mapper>

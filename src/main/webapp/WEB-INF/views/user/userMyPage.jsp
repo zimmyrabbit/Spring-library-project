@@ -1,15 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
-
 <c:set var="path" value="${pageContext.request.contextPath}" />
-		
+
 		<section class="breadcrumbs-custom bg-image"
 			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">마이페이지</h6>
-						<h1 class="breadcrumbs-custom-title">마이페이지</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated">
+						<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+							운영관리
+						</c:if>
+						<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+							마이페이지
+						</c:if>
+						</h6>
+						<h1 class="breadcrumbs-custom-title">
+						<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+							운영관리
+						</c:if>
+						<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+							마이페이지
+						</c:if>						
+						</h1>
 					</div>
 				</div>
 			</div>
@@ -19,7 +32,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-10 col-md-9 col-lg-6 col-xl-5">
-						<h6>MyPage</h6>
+						<h6>
+						<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+							User management
+						</c:if>
+						<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+							MyPage
+						</c:if>			
+						</h6>
 						<!-- Bootstrap tabs -->
 						<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 							<!-- Nav tabs-->
@@ -29,9 +49,27 @@
 								<li class="nav-item" role="presentation"><a
 									class="nav-link" href="#tabs-1-2" data-toggle="tab">비밀번호 변경</a></li>
 								<li class="nav-item" role="presentation"><a
-									class="nav-link" href="#tabs-1-3" data-toggle="tab">참여중인 토론</a></li>
-								<li class="nav-item" role="presentation"><a
-									class="nav-link" href="<c:url value='/bookReview/reviewList'/>" data-toggle="tab">내가 쓴 리뷰</a></li>	
+									class="nav-link" href="#tabs-1-3" data-toggle="tab">
+									<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+										회원 관리
+									</c:if>
+									<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+										참여중인 토론
+									</c:if>
+									</a>
+								</li>
+								<li class="nav-item" role="presentation">
+									<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+										<a class="nav-link" href="#tabs-1-4" data-toggle="tab">
+											모든 게시글 보기
+										</a>	
+									</c:if>
+									<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+										<a class="nav-link" href="<c:url value='/bookReview/reviewList'/>" data-toggle="tab">
+											내가 쓴 리뷰
+										</a>
+									</c:if>
+								</li>	
 							</ul>
 							<br>
 							<br>
@@ -74,7 +112,10 @@
 										<a class="content-dubbed">수정하기</a>
 									</div>	
 								</div>
+								
+								
 								<div class="tab-pane fade" id="tabs-1-3">
+								<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
 									<table>
 										<tr>
 											<th>제목</th>
@@ -101,7 +142,63 @@
 											<td>버튼</td>
 										</tr>
 									</table>
-								</div>								
+							 	</c:if>	
+								<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+									<table class="table table-hover table-job-positions text-center">
+										<thead>
+											<tr>
+												<th>id</th>
+												<th>회원 아이디</th>
+												<th>회원 상태</th>
+												<th>변경할 비밀번호</th>
+												<th>수정</th>
+											</tr>
+										</thead>
+										<tbody>
+										<c:forEach items="${list}" var="info">	
+											<tr>
+												<td>${ info.userSeq }</td>
+												<td>${ info.userId }</td>
+												<td>${ info.status }</td>
+												<td><input type="text" id="${ info.userSeq }" class="form-input form-control-has-validation form-control-last-child"></td>
+												<td>
+													<div class="button button-sm button-primary button-winona" onclick="password_admin(${info.userSeq})">
+														<a class="content-original">변경</a>
+														<a class="content-dubbed">변경</a>
+													</div>	
+												</td>
+											</tr>
+										</c:forEach>	
+										</tbody>
+									</table>
+							 	</c:if>								 	
+								</div>	
+								
+								<div class="tab-pane fade" id="tabs-1-4">
+								<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+									<table class="table table-hover table-job-positions text-center">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>글 제목</th>
+												<th>작성자</th>
+												<th>작성일</th>
+												<th>삭제</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>리뷰에용~~~</td>
+												<td>test</td>
+												<td>2021-10-15</td>
+												<td>버튼</td>
+											</tr>
+										</tbody>
+									</table>
+							 	</c:if>								 	
+								</div>									
+								
 							</div>
 						</div>
 					</div>
@@ -145,6 +242,36 @@ $('#updateBtn').click(function(){
 		}
 	});
 });	
+
+
+function password_admin(seq) {
+
+	let password = $('#'+ seq).val();
+	if(password == "") {
+		alert('변경할 비밀번호를 입력해주세요.');
+		return false;
+	}
+	let userId_seq = seq;
+
+	$.ajax({
+		type : 'POST',
+		url : "<c:url value='/user/adminPasswd'/>",
+		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType : "json",
+		data : {'userId_seq': userId_seq, 'password_update': password, 'password': 'admin'},
+		success : function(data) {
+			if(data.proc == "success") {
+				alert('정상적으로 변경되었습니다.');
+			}else {
+				alert('비밀번호가 틀렸습니다.');
+			}
+		},
+		error : function(xhr, status, error) {
+			alert('예기치 못한 에러 발생');
+		}
+	});
+	
+}
 
 
 $('#passwordBtn').click(function(){
@@ -217,4 +344,5 @@ $('#passwordBtn').click(function(){
 
 
 </script>		
+
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>
