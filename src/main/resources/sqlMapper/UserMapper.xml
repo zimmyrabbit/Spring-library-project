@@ -16,9 +16,21 @@
 	</select>
 	
 	<select id="userLogin" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT userId, userName, userSeq FROM userinfo 
+		SELECT userId, userSeq FROM userinfo 
 		 WHERE userId = #{id}
 		   AND userPw = #{password} 
 	</select>
      
+    <update id="userUpdate" parameterType="java.util.HashMap" >
+    	UPDATE userinfo SET userName = #{ userName }
+    	 WHERE userId = #{id}
+    	   AND userSeq = #{userId_seq}
+    	   AND userPw = #{password}
+    </update> 
+    
+    <update id="userPassWDupdate" parameterType="java.util.HashMap" >
+    	UPDATE userinfo SET userPw = #{ password_update }
+    	 WHERE userSeq = #{userId_seq}
+    	   AND userPw = #{password}
+    </update>     
 </mapper>

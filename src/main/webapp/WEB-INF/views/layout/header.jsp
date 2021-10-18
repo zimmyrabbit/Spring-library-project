@@ -53,7 +53,7 @@
              		   <a class="button button-primary button-winona" href="<c:url value='/user/userReg'/>?btn=join">회원가입</a>
                   </c:if>
                   <c:if test="${not empty loginSession }">
-       		           <a class="button button-primary-outline button-winona" href="#">마이페이지</a>
+       		           <a class="button button-primary-outline button-winona" href="<c:url value='/user/userMyPage'/>">마이페이지</a>
              		   <a class="button button-primary button-winona" href="<c:url value='/user/logout.do'/>">로그아웃</a>
                   </c:if>
                   </div>
@@ -87,9 +87,9 @@
                         </li>
                       </ul>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">도서 리뷰</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">도서 리뷰</a>
                       <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="single-service.html">Single Service</a>
+                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="<c:url value='/bookReview/reviewList'/>">도서 리뷰</a>
                         </li>
                       </ul>
                     </li>
@@ -104,11 +104,7 @@
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="#">랭킹 이벤트</a>
                       <ul class="rd-menu rd-navbar-dropdown">
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-gallery.html">Grid Gallery</a>
-                        </li>
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="masonry-gallery.html">Masonry Gallery</a>
-                        </li>
-                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="modern-gallery.html">Modern Gallery</a>
+                        <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/bookReview/reviewRank">랭킹 이벤트</a>
                         </li>
                       </ul>
                     </li>
