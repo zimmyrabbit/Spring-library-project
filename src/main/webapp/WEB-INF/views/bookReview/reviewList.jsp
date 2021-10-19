@@ -15,7 +15,38 @@
 			</div>
 		</section>
 		
-		
+		<div class="container" style="margin-top : 30px;">
+			<div class="row container-board-padding">
+	          	<div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row ">      
+					<table class="table table-hover table-job-positions text-center">
+						<thead class="thead_top">
+							<tr>
+								<th>글번호</th>
+								<th>이미지</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+						</thead>	
+							<c:forEach items="${list }" var="item">
+								<tr>
+									<td>${item.reviewSeq }</td>
+									<td><img src="${item.bookImg }" style="width:60px; height:80px;" />
+									<td><a href="#">${item.bookName }</a></td>
+									<td>${item.userId }</td>
+									<td><fmt:formatDate value="${item.enrollDate }" type="date" /></td>
+								</tr>
+							</c:forEach>
+							<c:if test="${empty list }">
+								<tr>
+									<th colspan="7">작성된 리뷰가 없습니다.</th>
+								<tr>
+							</c:if>
+					</table>
+
+				</div>
+			</div>
+		</div>
 		
 <script>
 

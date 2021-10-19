@@ -9,5 +9,12 @@
     	INSERT INTO bookreview (isbn, bookName, bookIntro, bookImg, bookUrl, userSeq, bookRev)
     	VALUES(#{isbn}, #{title}, #{bookIntro}, #{bookImg}, #{bookUrl}, #{userSeq}, #{bookRev})
     </insert>
+    
+    <select id="selectBookReviewList" resultType="java.util.HashMap">
+    	SELECT b.reviewSeq, b.bookName, b.bookImg, b.enrollDate, u.userId 
+    	FROM bookreview b, userinfo u
+    	WHERE b.userSeq = u.userSeq
+    	ORDER BY b.reviewSeq desc
+    </select>
 
 </mapper>

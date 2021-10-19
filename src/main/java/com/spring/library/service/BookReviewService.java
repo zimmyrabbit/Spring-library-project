@@ -1,6 +1,7 @@
 package com.spring.library.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,11 @@ public class BookReviewService {
 		bookReviewDao.insertBookReviewWrtie(map);
 	}
 
+	public List<HashMap<String, Object>> getBookReviewList() {
+
+		List<HashMap<String, Object>> list = bookReviewDao.selectBookReviewList();
+		
+		return list;
+	}
 
 }

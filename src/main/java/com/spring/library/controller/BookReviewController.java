@@ -1,6 +1,7 @@
 package com.spring.library.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,7 +21,13 @@ public class BookReviewController {
 	BookReviewService bookReviewService;
 
 	@RequestMapping(value="/bookReview/reviewList", method=RequestMethod.GET)
-	public void reviewList() { }
+	public void reviewList(Model model) { 
+		
+		List<HashMap<String,Object>> list = bookReviewService.getBookReviewList();
+		
+		model.addAttribute("list", list);
+		
+	}
 	
 	@RequestMapping(value="/bookReview/reviewRank", method=RequestMethod.GET)
 	public void reviewRank() { }
