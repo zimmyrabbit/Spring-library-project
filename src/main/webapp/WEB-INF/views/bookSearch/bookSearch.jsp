@@ -27,6 +27,7 @@ $("#search").click(function() {
 				getBookList += "<div>" + data.documents[i].title + "</div>"
 				getBookList += "<div> <a href=" + data.documents[i].url +"><img src='" + data.documents[i].thumbnail + "'/></a> </div>"
 				getBookList += "<a href='/bookChat/nonfaceDebateCollectWrite?title=" + data.documents[i].title + "'><button>토론모집</button></a>"
+				getBookList += "<a href='/bookReview/reviewWrite?title=" + data.documents[i].title + "&isbn=" + data.documents[i].isbn + "&bookIntro=" + data.documents[i].contents + "&bookImg=" + data.documents[i].thumbnail + "&bookUrl=" + data.documents[i].url + "'><button>리뷰작성</button></a>"
 				getBookList += "</div>"
 			}
 			

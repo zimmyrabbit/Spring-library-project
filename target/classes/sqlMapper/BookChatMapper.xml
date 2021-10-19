@@ -28,5 +28,47 @@
 		DELETE FROM nonfacedebatecollect
 		WHERE debatecolSeq = #{no}
 	</delete>
+	
+	<update id="updatePartPers" parameterType="java.util.HashMap">
+		UPDATE nonfacedebatecollect
+		SET partPers = partPers + 1
+		WHERE debatecolSeq = #{debateSeq}
+	</update>
+	
+	<insert id="insertNonfaceDebate" parameterType="java.util.HashMap">
+		INSERT INTO nonfacedebate (debatecolSeq, userSeq)
+		VALUES (#{debateSeq}, #{userSeq})
+	</insert>
+	
+	<select id="selectPartPers" parameterType="java.util.HashMap" resultType="int">
+		select partPers from nonfacedebatecollect
+		WHERE debatecolSeq = #{debateSeq}
+	</select>
+	
+	<select id="selectParticipationFlag" parameterType="int" resultType="int">
+		SELECT count(*) FROM nonfacedebate
+		WHERE debatecolSeq = #{no}
+		AND userSeq = #{userSeq}
+	</select>
+	
+	<update id="minusPartPers" parameterType="java.util.HashMap">
+		UPDATE nonfacedebatecollect
+		SET partPers = partPers - 1
+		WHERE debatecolSeq = #{debateSeq}
+	</update>
+	
+	<update id="updateStateOne" parameterType="java.util.HashMap">
+		UPDATE nonfacedebate
+		SET status = 1
+		WHERE debatecolSeq = #{debateSeq}
+		AND userSeq = #{userSeq}
+	</update>
+	
+	<update id="updateStateZero" parameterType="java.util.HashMap">
+		UPDATE nonfacedebate
+		SET status = 0
+		WHERE debatecolSeq = #{debateSeq}
+		AND userSeq = #{userSeq}
+	</update>
      
 </mapper>
