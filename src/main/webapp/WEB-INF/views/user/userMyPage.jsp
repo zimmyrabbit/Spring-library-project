@@ -180,6 +180,7 @@
 										<thead>
 											<tr>
 												<th>No.</th>
+												<th>게시판</th>
 												<th>글 제목</th>
 												<th>작성자</th>
 												<th>작성일</th>
@@ -187,18 +188,25 @@
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach items="${bbsList}" var="bbs">	
 											<tr>
-												<td>1</td>
-												<td>리뷰에용~~~</td>
-												<td>test</td>
-												<td>2021-10-15</td>
-												<td>버튼</td>
+												<td>${ bbs.id }</td>
+												<td>${bbs.table_nm eq 'bookreview' ? '리뷰게시판' : '토론모임글'}</td>
+												<td>${ bbs.title }</td>
+												<td>${ bbs.userId }</td>
+												<td>${ bbs.createDate }</td>
+												<td>
+													<div class="button button-sm button-primary button-winona" onclick="bbs_admin('${bbs.id}', '${bbs.table_nm }')">
+														<a class="content-original">삭제</a>
+														<a class="content-dubbed">삭제</a>
+													</div>	
+												</td>
 											</tr>
+										</c:forEach>	
 										</tbody>
 									</table>
 							 	</c:if>								 	
 								</div>									
-								
 							</div>
 						</div>
 					</div>
@@ -341,6 +349,27 @@ $('#passwordBtn').click(function(){
 	}
 	
 });	
+
+function bbs_admin(board_id , table_nm) {
+	
+	$.ajax({
+		type : 'POST',
+		url : "<c:url value='/user/bbsRemove'/>",
+		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType : "json",
+		data : {'board_id': board_id, 'table_nm': table_nm},
+		success : function(data) {
+			if(data.proc == "success") {
+				location.reload();
+			}else {
+				alert("삭제를 실패했습니다.");
+			}
+		},
+		error : function(xhr, status, error) {
+			alert('예기치 못한 에러 발생');
+		}
+	});
+}
 
 
 </script>		

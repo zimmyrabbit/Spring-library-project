@@ -24,6 +24,23 @@
 	<select id="userList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		SELECT userId, userSeq, userName, userState, if(userState > 0 , '활동', '정지') as status FROM userinfo 
 	</select>
+	
+	<select id="bbsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * FROM (
+			SELECT debatecolSeq AS id, 
+				debateTitle AS title,
+				(SELECT userId FROM userinfo ui where ui.userSeq = A.userSeq) AS userId,
+				DATE_FORMAT(openDate, '%Y-%m-%d %H:%i:%s') AS createDate,
+				'nonfacedebatecollect' AS table_nm
+			 FROM nonfacedebatecollect A
+			UNION ALL
+			SELECT reviewSeq AS id,
+				bookName AS title,
+				(SELECT userId FROM userinfo ui where ui.userSeq = B.userSeq) AS userId,
+				DATE_FORMAT(enrollDate, '%Y-%m-%d %H:%i:%s') AS createDate,
+				'bookreview' AS table_nm
+			FROM bookreview B ) AA ORDER BY AA.createDate DESC
+	</select>
      
     <update id="userUpdate" parameterType="java.util.HashMap" >
     	UPDATE userinfo SET userName = #{ userName }
@@ -39,4 +56,12 @@
     	   AND userPw = #{password}
     	 </if>
     </update>     
+    
+    <delete id="bookreviewRemove" parameterType="java.util.HashMap" >
+    	DELETE FROM bookreview WHERE reviewSeq = #{ board_id }
+    </delete>
+    
+    <delete id="nonfacedebatecollectRemove" parameterType="java.util.HashMap">
+   		DELETE FROM nonfacedebatecollect WHERE debatecolSeq = #{ board_id }
+    </delete>
 </mapper>

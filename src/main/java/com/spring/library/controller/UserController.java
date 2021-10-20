@@ -1,20 +1,22 @@
 package com.spring.library.controller;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.util.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.spring.library.service.UserService;
 import com.spring.library.util.HashNMacUtil;
 
@@ -26,10 +28,7 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(value="/user/userReg", method=RequestMethod.GET)
-	public void nonfaceDebateCollect (Model model, HttpServletRequest request) { 
-		
-		
-	}
+	public void userReg (Model model, HttpServletRequest request) {	}
 
 	// 회원가입 데이터 insert
 	@SuppressWarnings("static-access")
@@ -118,7 +117,37 @@ public class UserController {
 		
 		List<Map<String, String>> list = userService.userList();
 		model.addAttribute("list", list);
+		
+		List<Map<String, String>> bbsList = userService.bbsList();
+		model.addAttribute("bbsList", bbsList);
+		
 	}	
+	
+	
+	@RequestMapping(value= "/user/bbsRemove", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> bbsRemove(@RequestParam Map<String, String> formData,
+			ModelMap model, HttpServletRequest request) throws Exception { 
+		
+		String table = formData.get("table_nm");
+		int cnt = 0;
+		
+		if(table.equals("bookreview")) {
+			cnt = userService.bookreviewRemove(formData);
+		}else {
+			cnt = userService.nonfacedebatecollectRemove(formData);
+		}
+		
+		Map<String, String> map = new HashMap();
+		
+		if(cnt > 0) {
+			map.put("proc", "success");
+		}else {
+			map.put("proc", "fail");
+		}
+		
+		return map;
+	}
 	
 	
 	

@@ -30,11 +30,22 @@ public class UserService {
 		return userDao.userList();
 	}
 	
+	public List<Map<String, String>> bbsList() {
+		return userDao.bbsList();
+	}
+	
 	public int userUpdate(Map<String, String> args) {
 		return userDao.userUpdate(args);
 	}
 	
 	public int userPassWDupdate(Map<String, String> args) {
 		return userDao.userPassWDupdate(args);
+	}
+	public int bookreviewRemove(Map<String, String> args) {
+		return userDao.bookreviewRemove(args);
+	}
+	
+	public int nonfacedebatecollectRemove(Map<String, String> args) {
+		return userDao.nonfacedebatecollectRemove(args);
 	}
 }

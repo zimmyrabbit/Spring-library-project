@@ -12,8 +12,15 @@ public interface UserDao {
 	public Map<String, String> userLogin(Map<String, String> args);
 	
 	public List<Map<String, String>> userList();
+	
+	public List<Map<String, String>> bbsList();
 
 	public int userUpdate(Map<String, String> args);
 	
 	public int userPassWDupdate(Map<String, String> args);
+	
+	public int bookreviewRemove(Map<String, String> args);
+
+	public int nonfacedebatecollectRemove(Map<String, String> args);
 }
+
