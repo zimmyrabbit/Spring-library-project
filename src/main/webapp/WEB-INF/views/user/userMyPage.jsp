@@ -65,7 +65,7 @@
 										</a>	
 									</c:if>
 									<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
-										<a class="nav-link" href="<c:url value='/bookReview/reviewList'/>" data-toggle="tab">
+										<a class="nav-link" href="#tabs-1-4" data-toggle="tab">
 											내가 쓴 리뷰
 										</a>
 									</c:if>
@@ -116,31 +116,30 @@
 								
 								<div class="tab-pane fade" id="tabs-1-3">
 								<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
-									<table>
+									<table class="table table-hover table-job-positions text-center">
 										<tr>
+											<th>번호</th>
 											<th>제목</th>
 											<th>참여인원</th>
 											<th>방장</th>
 											<th>이동하기</th>
 										</tr>
+										<c:forEach items="${chatList }" var="item" varStatus="status">
 										<tr>
-											<td>ddd</td>
-											<td>2</td>
-											<td>test</td>
-											<td>버튼</td>
+											<td>${ item.debatecolSeq }</td>
+											<td><a href="/bookChat/nonfaceDebateCollectDetail?no=${item.debatecolSeq}">${item.debateTitle }</a></td>
+											<td>${item.partPers } / ${item.colPers }</td>
+											<td>${item.userId }</td>
+											<td>
+											<div class="button button-sm button-primary button-winona" onclick="">
+												<a class="content-original">이동하기</a>
+												<a class="content-dubbed">이동하기</a>
+											</div>	
+											</td>
 										</tr>
-										<tr>
-											<td>ddd</td>
-											<td>2</td>
-											<td>test</td>
-											<td>버튼</td>
-										</tr>
-										<tr>
-											<td>ddd</td>
-											<td>2</td>
-											<td>test</td>
-											<td>버튼</td>
-										</tr>
+										</c:forEach>
+
+
 									</table>
 							 	</c:if>	
 								<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
@@ -205,7 +204,31 @@
 										</c:forEach>	
 										</tbody>
 									</table>
-							 	</c:if>								 	
+							 	</c:if>	
+							 	<c:if test="${sessionScope.loginSession.userId ne 'adminmaster' }">
+									<table class="table table-hover table-job-positions text-center">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>작성일</th>
+												<th>추천수</th>
+											</tr>
+										</thead>
+										<tbody>
+										<c:forEach items="${reviewList}" var="review">	
+											<tr>
+												<td>${review.reviewSeq }</td>
+												<td>${review.bookName }</td>
+												<td>${review.userId }</td>
+												<td><fmt:formatDate value="${review.enrollDate }" type="date" /></td>
+												<td>0</td>
+											</tr>
+										</c:forEach>	
+										</tbody>
+									</table>							 	
+							 	</c:if>							 	
 								</div>									
 							</div>
 						</div>

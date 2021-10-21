@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Param;
 public interface BookChatDao {
 
 	public ArrayList<Map<String, Object>> selectNonfaceDebateCollectList();
+	
+	public ArrayList<Map<String, Object>> getMypageChatList(String userSeq);
 
 	public HashMap<String, Object> selectNonfaceDebateCollectDetail(int no);
 

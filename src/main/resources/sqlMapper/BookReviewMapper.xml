@@ -16,5 +16,17 @@
     	WHERE b.userSeq = u.userSeq
     	ORDER BY b.reviewSeq desc
     </select>
+    
+    <select id="getMyPageReviewList" parameterType="String" resultType="java.util.HashMap">
+    	SELECT b.reviewSeq,
+    		b.bookName,
+    		b.bookImg,
+    		b.enrollDate,
+    		u.userId 
+    	 FROM bookreview b, userinfo u
+    	WHERE b.userSeq = u.userSeq
+    	  AND b.userSeq = #{value}
+    	ORDER BY b.reviewSeq desc
+    </select>
 
 </mapper>

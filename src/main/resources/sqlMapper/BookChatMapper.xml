@@ -5,6 +5,19 @@
     
 <mapper namespace="com.spring.library.dao.BookChatDao">
     
+	<select id="getMypageChatList" parameterType="String" resultType="java.util.HashMap">
+		SELECT debatecolSeq,
+			debateTitle,
+			fromDate,
+			colPers,
+			partPers,
+			openDate,
+			(select userId from userinfo ui where ui.userSeq = #{value}) as userId
+		FROM nonfacedebatecollect
+		WHERE userSeq = #{value}
+		ORDER BY debatecolSeq DESC
+	</select>
+	
 	<select id="selectNonfaceDebateCollectList" resultType="java.util.HashMap">
 		SELECT n.debatecolSeq, n.debateTitle, n.fromDate, n.colPers, n.partPers, n.openDate, u.userId
 		FROM nonfacedebatecollect n, userinfo u

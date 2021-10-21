@@ -9,6 +9,6 @@ public interface BookReviewDao {
 
 	public List<HashMap<String, Object>> selectBookReviewList();
 
-
+	public List<HashMap<String, Object>> getMyPageReviewList(String userSeq);
 
 }

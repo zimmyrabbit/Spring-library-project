@@ -25,5 +25,11 @@ public class BookReviewService {
 		
 		return list;
 	}
+	
+	public List<HashMap<String, Object>> getMyPageReviewList(String userSeq) {
+		
+		return bookReviewDao.getMyPageReviewList(userSeq);
+
+	}
 
 }

@@ -21,6 +21,12 @@ public class BookChatService {
 		
 		return list;
 	}
+	
+	public ArrayList<Map<String, Object>> getMypageChatList(String userSeq) {
+		
+		return bookChatDao.getMypageChatList(userSeq);
+		
+	}
 
 	public HashMap<String, Object> getNonfaceDebateCollectDetail(int no) {
 		

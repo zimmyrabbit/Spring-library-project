@@ -1,5 +1,6 @@
 package com.spring.library.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.library.service.BookChatService;
+import com.spring.library.service.BookReviewService;
 import com.spring.library.service.UserService;
 import com.spring.library.util.HashNMacUtil;
 
@@ -26,6 +29,12 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	BookChatService bookChatService;
+	
+	@Autowired
+	BookReviewService bookReviewService;
 
 	@RequestMapping(value="/user/userReg", method=RequestMethod.GET)
 	public void userReg (Model model, HttpServletRequest request) {	}
@@ -113,13 +122,23 @@ public class UserController {
 	}	
 	
 	@RequestMapping(value = "/user/userMyPage", method=RequestMethod.GET)
-	public void userMyPage(ModelMap model, HttpServletRequest request) throws Exception { 
+	public void userMyPage(ModelMap model, HttpServletRequest request, HttpSession session) throws Exception { 
 		
-		List<Map<String, String>> list = userService.userList();
-		model.addAttribute("list", list);
+		HashMap<String,Object> sessionInfo = (HashMap<String,Object>) session.getAttribute("loginSession");
+		String seq = sessionInfo.get("userSeq").toString();
 		
-		List<Map<String, String>> bbsList = userService.bbsList();
-		model.addAttribute("bbsList", bbsList);
+		if(sessionInfo.get("userId").toString().equals("adminmaster")) {
+			List<Map<String, String>> list = userService.userList();
+			model.addAttribute("list", list);
+			List<Map<String, String>> bbsList = userService.bbsList();
+			model.addAttribute("bbsList", bbsList);
+		}else {
+			ArrayList<Map<String,Object>> chatList = bookChatService.getMypageChatList(seq);
+			model.addAttribute("chatList", chatList);
+			
+			List<HashMap<String,Object>> reviewList = bookReviewService.getMyPageReviewList(seq);
+			model.addAttribute("reviewList", reviewList);
+		}
 		
 	}	
 	
