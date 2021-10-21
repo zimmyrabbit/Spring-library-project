@@ -22,7 +22,8 @@
     		b.bookName,
     		b.bookImg,
     		b.enrollDate,
-    		u.userId 
+    		u.userId,
+    		(select count(*) from bookreview_like bi where bi.reviewSeq = b.reviewSeq) as cnt
     	 FROM bookreview b, userinfo u
     	WHERE b.userSeq = u.userSeq
     	  AND b.userSeq = #{value}

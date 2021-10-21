@@ -223,7 +223,7 @@
 												<td>${review.bookName }</td>
 												<td>${review.userId }</td>
 												<td><fmt:formatDate value="${review.enrollDate }" type="date" /></td>
-												<td>0</td>
+												<td>${review.cnt }</td>
 											</tr>
 										</c:forEach>	
 										</tbody>
