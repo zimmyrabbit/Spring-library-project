@@ -32,13 +32,9 @@ public class BookReviewController {
 	public void reviewList(Model model) { 
 		
 		List<HashMap<String,Object>> list = bookReviewService.getBookReviewList();
-		
 		model.addAttribute("list", list);
 		
 	}
-	
-	@RequestMapping(value="/bookReview/reviewRank", method=RequestMethod.GET)
-	public void reviewRank() { }
 	
 	@RequestMapping(value="/bookReview/reviewWrite", method=RequestMethod.GET)
 	public void bookReviewWrite(HttpServletRequest request, Model model) {

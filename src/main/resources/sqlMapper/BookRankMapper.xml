@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.spring.library.dao.BookRankDao">
+  
+  <select id="reviewRank" resultType="java.util.HashMap">
+	 SELECT (SELECT COUNT(*) from bookreview br WHERE br.userSeq = ui.userSeq) AS reviewCnt,
+		(SELECT COUNT(*) from bookreview_like bl,bookreview br  WHERE bl.userId = ui.userSeq AND bl.reviewSeq = br.reviewSeq) AS likeCnt,
+		replace(ui.userId, right(ui.userId,2), '**') AS userId
+	  FROM userinfo ui ORDER BY reviewCnt DESC LIMIT 5
+  </select>
+  
+  <select id="likeRank" resultType="java.util.HashMap">
+  	 SELECT (SELECT COUNT(*) from bookreview br WHERE br.userSeq = ui.userSeq) AS reviewCnt,
+		(SELECT COUNT(*) from bookreview_like bl,bookreview br  WHERE bl.userId = ui.userSeq AND bl.reviewSeq = br.reviewSeq) AS likeCnt,
+		replace(ui.userId, right(ui.userId,2), '**') AS userId
+	  FROM userinfo ui ORDER BY likeCnt DESC LIMIT 5
+  </select>
+  
+  <select id="bestBookRank" resultType="java.util.HashMap">
+	SELECT AA.title, SUM(cnt) AS cnt FROM (
+		SELECT debateTitle AS title,
+			COUNT(*) AS cnt
+		 FROM nonfacedebatecollect A
+	    GROUP BY title
+	   HAVING COUNT(*) > 0
+		UNION ALL
+		SELECT bookName AS title,
+			COUNT(*) AS cnt
+		  FROM bookreview B
+	     GROUP BY title 
+	    HAVING COUNT(*) > 0) AA 
+	     GROUP BY title
+	    HAVING COUNT(*) > 0
+         ORDER BY cnt DESC LIMIT 5
+  </select> 
+</mapper>
