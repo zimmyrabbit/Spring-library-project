@@ -2,6 +2,7 @@ package com.spring.library.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.library.service.BookReviewService;
 import com.spring.library.service.UserService;
@@ -71,11 +75,17 @@ public class BookReviewController {
 	}
 	
 	@RequestMapping(value="/bookReview/reviewDetail", method=RequestMethod.GET)
-	public void bookReviewDetail(Model model, int reviewSeq) {
+	public void bookReviewDetail(Model model, int reviewSeq, HttpServletRequest request, HttpSession session) {
 		
 		HashMap<String,Object> map = bookReviewService.getBookReviewDetail(reviewSeq);
-		
 		model.addAttribute("map", map);
+		
+		HashMap<String,Object> sessionInfo = (HashMap<String,Object>) session.getAttribute("loginSession");
+		HashMap<String, Object> like = new HashMap<>();
+		like.put("userId", sessionInfo.get("userSeq"));
+		like.put("reviewSeq", reviewSeq);
+		
+		model.addAttribute("like", bookReviewService.likeDtl(like));
 	}
 	
 	@RequestMapping(value="/bookChat/bookReviewDelete", method=RequestMethod.GET)
@@ -88,5 +98,21 @@ public class BookReviewController {
 		userService.bookreviewRemove(map);
 		
 		return "redirect:/bookReview/reviewList";
+	}
+	
+	@RequestMapping(value="/bookReview/like", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> likeSwap(@RequestParam HashMap<String, String> formData,
+			ModelMap model, HttpServletRequest request) {
+		
+		int cnt = bookReviewService.likeSwap(formData);
+		
+		if( cnt > 0) {
+			formData.put("proc", "success");
+		}else {
+			formData.put("proc", "fail");
+		}
+		
+		return formData;
 	}
 }

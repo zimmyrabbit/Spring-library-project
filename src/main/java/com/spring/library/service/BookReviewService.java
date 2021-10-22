@@ -38,5 +38,20 @@ public class BookReviewService {
 		
 		return list;
 	}
+	
+	public int likeSwap(HashMap<String, String> map) {
+		
+		if("Y".equals(map.get("_likeYn"))) {
+			return bookReviewDao.likeReview(map);
+		}else {
+			return bookReviewDao.likeCancel(map);
+		}
+	}
+	
+	public int likeDtl(HashMap<String, Object> map) {
+
+		return bookReviewDao.likeDtl(map);
+
+	}
 
 }

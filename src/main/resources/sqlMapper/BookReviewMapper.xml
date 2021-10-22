@@ -11,7 +11,11 @@
     </insert>
     
     <select id="selectBookReviewList" resultType="java.util.HashMap">
-    	SELECT b.reviewSeq, b.bookName, b.bookImg, b.enrollDate, u.userId 
+    	SELECT b.reviewSeq,
+    		b.bookName,
+    		b.bookImg,
+    		b.enrollDate,
+    		u.userId
     	FROM bookreview b, userinfo u
     	WHERE b.userSeq = u.userSeq
     	ORDER BY b.reviewSeq desc
@@ -37,4 +41,21 @@
     	AND reviewSeq = #{reviewSeq}
     </select>
 
+	<insert id="likeReview">
+		INSERT INTO bookreview_like ( reviewSeq, userId ) 
+			VALUES ( #{reviewSeq}, #{userId} )
+	</insert>
+	
+	<delete id="likeCancel">
+		DELETE FROM bookreview_like 
+		 WHERE reviewSeq = #{reviewSeq}
+		   AND userId = #{userId}
+	</delete>
+	
+	<select id="likeDtl" parameterType="java.util.HashMap" resultType="integer">
+		SELECT count(*) FROM bookreview_like 
+		 WHERE reviewSeq = #{reviewSeq}
+		   AND userId = #{userId}
+	</select>
+	
 </mapper>

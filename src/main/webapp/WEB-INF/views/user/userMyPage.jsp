@@ -220,7 +220,7 @@
 										<c:forEach items="${reviewList}" var="review">	
 											<tr>
 												<td>${review.reviewSeq }</td>
-												<td>${review.bookName }</td>
+												<td><a href="/bookReview/reviewDetail?reviewSeq=${review.reviewSeq }">${review.bookName }</a></td>
 												<td>${review.userId }</td>
 												<td><fmt:formatDate value="${review.enrollDate }" type="date" /></td>
 												<td>${review.cnt }</td>

@@ -27,6 +27,13 @@
 		
 		<input type="submit" id="subBtn" value="쓰기" />
 		
+		<c:if test="${ like gt 0 }">
+			<img src="<c:url value='/resources/like/like.png'/>" style="width:46px; height:46px" id="like" data-like="N">
+		</c:if>
+		<c:if test="${ like lt 1 }">
+			<img src="<c:url value='/resources/like/default_like.png'/>" style="width:46px; height:46px" id="like" data-like="N">
+		</c:if>
+		
 		<c:set var="admin" value="adminmaster" />
 		<c:if test="${sessionScope.loginSession.userSeq eq map.userSeq || sessionScope.loginSession.userId eq admin}">
 		<a href="/bookChat/bookReviewDelete?board_id=${map.reviewSeq }"><button>삭제</button></a>
@@ -41,6 +48,28 @@
 		
 		
 <script>
+$('#like').click(function(){
+	let like = $(this).data('like');
+	let src = like == "N" ? "<c:url value='/resources/like/like.png'/>":"<c:url value='/resources/like/default_like.png'/>";
+	let _likeYn = like == "N" ? "Y":"N"; 
+	$(this).attr("src", src);
+	$(this).data('like', _likeYn);
+	let reviewSeq = '${map.reviewSeq }';
+
+	$.ajax({
+		type : 'POST',
+		url : "<c:url value='/bookReview/like'/>",
+		contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType : "json",
+		data : {'_likeYn': _likeYn, 'reviewSeq': reviewSeq, 'userId': '${sessionScope.loginSession.userSeq}' },
+		success : function(data) {
+			console.log('좋아요 버튼');
+		},
+		error : function(xhr, status, error) {
+			alert('예기치 못한 에러 발생');
+		}
+	});
+});
 </script>		
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>

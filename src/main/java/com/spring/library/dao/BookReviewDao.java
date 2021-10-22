@@ -12,5 +12,11 @@ public interface BookReviewDao {
 	public List<HashMap<String, Object>> getMyPageReviewList(String userSeq);
 
 	public HashMap<String, Object> selectBookReviewDetail(int reviewSeq);
+	
+	public int likeReview(HashMap<String, String> map);
+	
+	public int likeCancel(HashMap<String, String> map);
+	
+	public int likeDtl(HashMap<String, Object> map);
 
 }
