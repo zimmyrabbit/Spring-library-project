@@ -29,5 +29,12 @@
     	  AND b.userSeq = #{value}
     	ORDER BY b.reviewSeq desc
     </select>
+    
+    <select id="selectBookReviewDetail" parameterType="int" resultType="java.util.HashMap">
+    	SELECT r.reviewSeq, r.isbn, r.bookName, r.bookIntro, r.bookImg, r.bookUrl, r.userSeq, r.bookRev, r.enrollDate, u.userId
+    	FROM bookreview r, userinfo u
+    	WHERE r.userSeq = u.userSeq
+    	AND reviewSeq = #{reviewSeq}
+    </select>
 
 </mapper>

@@ -9,16 +9,16 @@
 		
 		<div>
 			<img src="${map.bookImg }"/>
-			제목 : <input type="text" id="title" name="title" readonly="readonly" value="${map.title}"/> <br>
+			제목 : <span>${map.bookName}</span> <br>
 			주소 : <a href="${map.bookUrl }">${map.bookUrl }</a>
 		</div>
 		
 		<div>
-		<textarea rows="10" cols="50" readonly="readonly" id="bookIntro" name="bookIntro" style="overflow-x:hidden; overflow-y:auto;">${map.bookIntro }</textarea>
+		<textarea rows="10" cols="40" readonly="readonly" id="bookIntro" name="bookIntro" style="overflow-x:hidden; overflow-y:auto;">${map.bookIntro }</textarea>
 		</div>
 		
 		<div>
-		<textarea rows="10" cols="40" id="bookRev" name="bookRev" ></textarea>
+		<textarea rows="10" cols="40" id="bookRev" name="bookRev" readonly="readonly">${map.bookRev}</textarea>
 		</div>
 		
 		<input type="hidden" value="${map.isbn }" id="isbn" name="isbn" />
@@ -26,6 +26,11 @@
 		<input type="hidden" value="${map.bookImg }" id="bookImg" name="bookImg" />
 		
 		<input type="submit" id="subBtn" value="쓰기" />
+		
+		<c:set var="admin" value="adminmaster" />
+		<c:if test="${sessionScope.loginSession.userSeq eq map.userSeq || sessionScope.loginSession.userId eq admin}">
+		<a href="/bookChat/bookReviewDelete?board_id=${map.reviewSeq }"><button>삭제</button></a>
+		</c:if>
 </form>
 
 
@@ -36,7 +41,6 @@
 		
 		
 <script>
-
 </script>		
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>

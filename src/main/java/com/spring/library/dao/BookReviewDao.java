@@ -11,4 +11,6 @@ public interface BookReviewDao {
 
 	public List<HashMap<String, Object>> getMyPageReviewList(String userSeq);
 
+	public HashMap<String, Object> selectBookReviewDetail(int reviewSeq);
+
 }

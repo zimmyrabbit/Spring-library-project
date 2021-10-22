@@ -32,7 +32,7 @@
 								<tr>
 									<td>${item.reviewSeq }</td>
 									<td><img src="${item.bookImg }" style="width:60px; height:80px;" />
-									<td><a href="#">${item.bookName }</a></td>
+									<td><a href="/bookReview/reviewDetail?reviewSeq=${item.reviewSeq }">${item.bookName }</a></td>
 									<td>${item.userId }</td>
 									<td><fmt:formatDate value="${item.enrollDate }" type="date" /></td>
 								</tr>

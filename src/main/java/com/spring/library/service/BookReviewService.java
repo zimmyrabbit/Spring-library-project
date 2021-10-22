@@ -32,4 +32,11 @@ public class BookReviewService {
 
 	}
 
+	public HashMap<String, Object> getBookReviewDetail(int reviewSeq) {
+		
+		HashMap<String, Object> list = bookReviewDao.selectBookReviewDetail(reviewSeq);
+		
+		return list;
+	}
+
 }

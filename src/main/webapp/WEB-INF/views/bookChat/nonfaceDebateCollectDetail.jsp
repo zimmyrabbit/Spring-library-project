@@ -33,8 +33,11 @@ ${map.debateCon }
 </div>
 
 <a href="/bookChat/nonfaceDebateCollect"><button>목록</button></a>
-<a href="/bookChat/nonfaceDebateCollectDelete?no=${map.debatecolSeq }"><button>삭제</button></a>
 
+<c:set var="admin" value="adminmaster" />
+<c:if test="${sessionScope.loginSession.userSeq eq map.userSeq || sessionScope.loginSession.userId eq admin}">
+<a href="/bookChat/nonfaceDebateCollectDelete?no=${map.debatecolSeq }"><button>삭제</button></a>
+</c:if>
 
 </div>
 </div>

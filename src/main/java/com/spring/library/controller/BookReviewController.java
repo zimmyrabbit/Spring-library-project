@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.library.service.BookReviewService;
+import com.spring.library.service.UserService;
 
 @Controller
 public class BookReviewController {
 	
 	@Autowired
 	BookReviewService bookReviewService;
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value="/bookReview/reviewList", method=RequestMethod.GET)
 	public void reviewList(Model model) { 
@@ -64,5 +68,25 @@ public class BookReviewController {
 		
 		return "redirect:/bookReview/reviewList";
 		
+	}
+	
+	@RequestMapping(value="/bookReview/reviewDetail", method=RequestMethod.GET)
+	public void bookReviewDetail(Model model, int reviewSeq) {
+		
+		HashMap<String,Object> map = bookReviewService.getBookReviewDetail(reviewSeq);
+		
+		model.addAttribute("map", map);
+	}
+	
+	@RequestMapping(value="/bookChat/bookReviewDelete", method=RequestMethod.GET)
+	public String bookReviewDelete(String board_id) {
+		
+		HashMap<String,String> map = new HashMap<>();
+		
+		map.put("board_id", board_id);
+		
+		userService.bookreviewRemove(map);
+		
+		return "redirect:/bookReview/reviewList";
 	}
 }
