@@ -17,7 +17,7 @@
 <div class="row container-board-padding" style="display: flex; justify-content: center;">
 <div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row " > 
 
-<form action="/bookChat/nonfaceDebateCollectWrite" method="post">
+<form name="write_form" action="/bookChat/nonfaceDebateCollectWrite" method="post">
 		<table class="table table-hover">
 		<tr>
 			<td colspan="2"> 제목 : ${title} </td>
@@ -32,7 +32,7 @@
 		</tr>
 		</table>
 		
-		<input type="hidden" name=title id="title" value="${title }"/>
+		<input type="hidden" name=debateTitle id="debateTitle" value="${title }"/>
 		
 		<button type="button" id="subBtn" class="button button-primary button-winona" onclick="subCheck()">쓰기</button>
 </form>
@@ -45,6 +45,11 @@
 <script type="text/javascript">
 
 function subCheck() {
+	
+	if($("#colPers").val() == "") {
+		alert('모집인원을 입력해 주세요.');
+		return false;
+	}
 
 	if($("#colPers").val() < 2) {
 		alert('최소 모집인원수는 2명 입니다.');
@@ -61,6 +66,13 @@ function subCheck() {
 		return false;
 	}
 	
+	if($("#debateCon").val() == "") {
+		alert('내용을 입력해 주세요.');
+		return false;
+	}
+	
+	
+	document.write_form.submit();
 }
 
 function getDate() {

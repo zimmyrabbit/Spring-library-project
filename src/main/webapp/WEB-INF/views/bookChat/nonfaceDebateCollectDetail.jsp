@@ -68,6 +68,9 @@ function joinDebate() {
 		, data : {"debateSeq" : debateSeq
 				, "userSeq" : userSeq}
 		,success : function(data) {
+			
+			alert('참여 완료');
+			
 			$("#partPers").html("");
 			$("#partPers").html(data);
 			
@@ -85,6 +88,9 @@ function cancleDebate() {
 		, data : {"debateSeq" : debateSeq
 				, "userSeq" : userSeq}
 		, success : function(data) {
+			
+			alert('참여 취소 완료');
+			
 			$("#partPers").html("");
 			$("#partPers").html(data);
 			

@@ -16,8 +16,8 @@
 <div style="text-align:center; margin: 50px 0px;">
 
 <div style="display: inline-block; border-bottom: 1px solid black; padding-bottom: 30px; margin-bottom : 20px;">
-<input type="text" id="bookName" name="bookName" style="width:400px; display: inline" class="form-input form-control-has-validation form-control-last-child"/>
-<button type="submit" id="search" name="search" class="button button-primary button-winona" style="margin:0px 30px;">검색</button>
+<input type="text" id="bookName" name="bookName" style="width:400px; display: inline" class="form-input form-control-has-validation form-control-last-child" onkeyup="enterkey();"/>
+<button type="submit" id="search" name="search" class="button button-primary button-winona" style="margin:0px 30px;" onclick="bookSearch()">검색</button>
 </div>
 
 <div id="bookList">
@@ -31,7 +31,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
-$("#search").click(function() {
+function bookSearch() {
 	$.ajax({
 		method : 'GET'
 		, url : "https://dapi.kakao.com/v3/search/book"
@@ -60,7 +60,13 @@ $("#search").click(function() {
 			$("#bookList").html("");
 			$("#bookList").html(getBookList);
 		})
-})
+}
+
+function enterkey() { 
+	if (window.event.keyCode == 13) { 
+		bookSearch();
+	}
+}
 
 
 </script>

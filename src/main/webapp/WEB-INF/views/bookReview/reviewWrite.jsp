@@ -18,7 +18,7 @@
 <div class="row container-board-padding" style="display: flex; justify-content: center;">
 <div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row "> 
 
-<form action="/bookReview/reviewWrite" method="post">
+<form name="write_form" action="/bookReview/reviewWrite" method="post">
 		
 		<div style="font-size: 1.5em; margin : 40px 0px;">
 			제목 : ${map.title}
@@ -39,7 +39,7 @@
 		<input type="hidden" value="${map.bookUrl }" id="bookUrl" name="bookUrl" />
 		<input type="hidden" value="${map.bookImg }" id="bookImg" name="bookImg" />
 		
-		<input type="submit" id="subBtn" value="쓰기" class="button button-primary button-winona" style="margin-bottom: 40px;"/>
+		<input type="button" id="subBtn" value="쓰기" class="button button-primary button-winona" style="margin-bottom: 40px;" onclick="writeCheck()"/>
 </form>
 
 
@@ -49,7 +49,17 @@
 		
 		
 		
-<script>
+<script type="text/javascript">
+
+function writeCheck() {
+	
+	if($('#booKRev').val() == "") {
+		alert('리뷰내용을 입력해주세요.');
+		return false; 
+	}
+	
+	document.write_form.submit();
+}
 
 </script>		
 
