@@ -60,7 +60,7 @@ function joinDebate() {
 			$("#partPers").html(data);
 			
 			$("#partBtn").html("");
-			$("#partBtn").html('<button type="button" onclick="cancleDebate()">참여취소</button>');
+			$("#partBtn").html('<button type="button" onclick="cancleDebate()" class="button button-primary-outline button-winona">참여취소</button>');
 		}
 	})
 }
@@ -77,7 +77,7 @@ function cancleDebate() {
 			$("#partPers").html(data);
 			
 			$("#partBtn").html("");
-			$("#partBtn").html('<button type="button" onclick="joinDebate()">참여하기</button>');
+			$("#partBtn").html('<button type="button" onclick="joinDebate()" class="button button-primary button-winona">참여하기</button>');
 		}
 	})
 }
