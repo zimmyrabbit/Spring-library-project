@@ -32,12 +32,46 @@
 		</tr>
 		</table>
 		
-		<input type="submit" id="subBtn" value="쓰기" class="button button-primary button-winona" />
+		<input type="hidden" name=title id="title" value="${title }"/>
+		
+		<button type="button" id="subBtn" class="button button-primary button-winona" onclick="subCheck()">쓰기</button>
 </form>
 
 
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+function subCheck() {
+
+	if($("#colPers").val() < 2) {
+		alert('최소 모집인원수는 2명 입니다.');
+		return false;
+	}
+	
+	if($("#fromDate").val() == "") {
+		alert('마감일을 입력해 주세요.')
+		return false;
+	}
+	
+	if($("#fromDate").val() < getDate() && $("#fromDate").val() != "") {
+		alert('마감일이 현재일자보다 이전일 수 없습니다.')
+		return false;
+	}
+	
+}
+
+function getDate() {
+	
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = ("0" + (1 + date.getMonth())).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+
+    return year + "-" + month + "-" + day;
+}
+</script>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>

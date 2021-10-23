@@ -50,12 +50,19 @@ function selectMapList() {
 				    map: map
 				});
 				
+				var con = "";
+				con += '<div style="width:180px;text-align:center;padding:10px;font-size:10px;">'
+				con += '<b>'+ data[i].libName +'</b>'
+				con += '<br> <b> tel : ' + data[i].libTel + '</b>'
+				if(data[i].libLink == '정보없음') {
+				con += '<br>  url : 정보없음 </a>'
+				} else {
+				con += '<br>  url : <a href="' + data[i].libLink + '">' + data[i].libLink + '</a>'
+				}
+				con += '</div>'
+				
 				var infoWindow = new naver.maps.InfoWindow({
-					content : '<div style="width:180px;text-align:center;padding:10px;font-size:10px;">'
-						+ '<b>'+ data[i].libName +'</b>'
-						+ '<br> <b> tel : ' + data[i].libTel + '</b>'
-						+ '<br>  url : <a href="' + data[i].libLink + '">' + data[i].libLink + '</a>'
-						+ '</div>'
+					content : con
 				})
 				
 				markers.push(marker);
