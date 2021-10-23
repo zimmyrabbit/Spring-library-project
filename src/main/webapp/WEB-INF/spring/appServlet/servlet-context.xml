@@ -45,7 +45,14 @@
 		<interceptor>
 			<mapping path="/bookReview/**"/>
 			<exclude-mapping path="/bookReview/reviewList"/>
+			<exclude-mapping path="/bookReview/reviewRank"/>
 			<beans:bean class="com.spring.library.interceptor.BookReviewInter"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/bookChat/**"/>
+			<exclude-mapping path="/bookChat/nonfaceDebateCollect"/>
+			<beans:bean class="com.spring.library.interceptor.BookChatInter"/>
 		</interceptor>
 	</interceptors>
 	

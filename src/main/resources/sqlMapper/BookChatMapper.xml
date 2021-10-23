@@ -35,6 +35,9 @@
 	<insert id="insertNonfaceDebateCollectWrite" parameterType="java.util.HashMap">
 		INSERT INTO nonfacedebatecollect(userSeq, debateTitle, fromDate, colPers, debateCon)
 		VALUES (#{userSeq}, #{debateTitle}, #{fromDate}, #{colPers}, #{debateCon})
+		<selectKey keyProperty="cnt" resultType="int" order="AFTER">
+			SELECT max(debatecolSeq) cnt FROM nonfacedebatecollect
+		</selectKey>
 	</insert>
 	
 	<delete id="deleteNonfaceDebateCollectDelete" parameterType="int">
@@ -87,6 +90,11 @@
 	<insert id="insertChatData" parameterType="java.util.HashMap">
 		INSERT INTO nonfacedebatechat ( userSeq, userId, chatCon, writeDate )
 		VALUES ( #{userSeq}, #{userId}, #{chatCon}, now())
+	</insert>
+	
+	<insert id="insertNonfaceDebateWriter" parameterType="java.util.HashMap">
+		INSERT INTO nonfacedebate(debatecolSeq, userSeq, status)
+		VALUES(#{cnt}, #{userSeq}, 0)
 	</insert>
      
 </mapper>

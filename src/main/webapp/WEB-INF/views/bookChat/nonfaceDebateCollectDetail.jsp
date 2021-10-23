@@ -26,6 +26,7 @@
 	<tr>
 		<td colspan="2">개설일/마감일 : <fmt:formatDate value="${map.openDate }" type="date" /> / <fmt:formatDate value="${map.fromDate }" type="date" /></td>
 		<td>참여인원/모집인원 : <span id="partPers">${map.partPers }</span> / ${map.colPers } 
+		<c:if test="${map.userId ne sessionScope.loginSession.userId }">
 		<div id="partBtn">
 		<c:if test="${map.partPers ne map.colPers }">
 			<c:if test="${sessionScope.loginSession.userSeq ne map.userSeq && flag eq false}">
@@ -36,6 +37,8 @@
 			<button type="button" onclick="cancleDebate()" class="button button-primary-outline button-winona">참여취소</button>
 			</c:if>
 		</div>
+		</c:if>
+		
 		</td>
 	</tr>
 </table>

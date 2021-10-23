@@ -37,7 +37,11 @@ public class BookChatService {
 
 	public void putNonfaceDebateCollectWrite(HashMap<String, Object> map) {
 
-		bookChatDao.insertNonfaceDebateCollectWrite(map);
+		int cnt = 0;
+		map.put("cnt", cnt);
+		cnt = bookChatDao.insertNonfaceDebateCollectWrite(map);
+		
+		bookChatDao.insertNonfaceDebateWriter(map);
 	}
 
 	public void cutNonfaceDebateCollectDelete(int no) {

@@ -14,7 +14,7 @@ public interface BookChatDao {
 
 	public HashMap<String, Object> selectNonfaceDebateCollectDetail(int no);
 
-	public void insertNonfaceDebateCollectWrite(HashMap<String, Object> map);
+	public int insertNonfaceDebateCollectWrite(HashMap<String, Object> map);
 
 	public void deleteNonfaceDebateCollectDelete(int no);
 
@@ -33,5 +33,9 @@ public interface BookChatDao {
 	public void updateStateOne(HashMap<String, Integer> map);
 
 	public void updateStateZero(HashMap<String, Integer> map);
+
+	public int insertNonfaceDebateWriter(HashMap<String, Object> map);
+
+	
 
 }
