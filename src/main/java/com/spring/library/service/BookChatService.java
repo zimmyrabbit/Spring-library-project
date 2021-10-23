@@ -59,6 +59,10 @@ public class BookChatService {
 		int partPers = bookChatDao.selectPartPers(map);
 		return partPers;
 	}
+	
+	public int insertChatData(HashMap<String, String> map) {
+		return bookChatDao.insertChatData(map);
+	}
 
 	public boolean getParticipationFlag(int no, int userSeq) {
 

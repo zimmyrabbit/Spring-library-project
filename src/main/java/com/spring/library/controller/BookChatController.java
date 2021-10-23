@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.library.service.BookChatService;
@@ -114,8 +115,30 @@ public class BookChatController {
 	}
 	
 	@RequestMapping(value="/bookChat/chat", method=RequestMethod.GET)
-	public String chat() {
+	public String chat(HttpServletRequest request, Model model) {
+
+		int no = Integer.parseInt(request.getParameter("id"));
+		HashMap<String, Object> map = bookChatService.getNonfaceDebateCollectDetail(no);
+		model.addAttribute("book", map);
+		
 		return "/chat/chat";
+	}
+	
+	@RequestMapping(value="/bookChat/procDate", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> procDate(@RequestParam HashMap<String, String> formData,HttpServletRequest request, Model model) {
+		
+		int cnt = bookChatService.insertChatData(formData);
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		if( cnt > 0) {
+			map.put("proc", "success");
+		}else {
+			map.put("proc", "fail");
+		}
+		
+		return map;
 	}
 
 }

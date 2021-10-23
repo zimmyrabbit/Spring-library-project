@@ -23,6 +23,8 @@ public interface BookChatDao {
 	public void insertNonfaceDebate(HashMap<String, Integer> map);
 
 	public int selectPartPers(HashMap<String, Integer> map);
+	
+	public int insertChatData(HashMap<String, String> map);
 
 	public int selectParticipationFlag(@Param("no")int no, @Param("userSeq")int userSeq);
 

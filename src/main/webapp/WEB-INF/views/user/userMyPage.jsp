@@ -138,7 +138,7 @@
 											<td>${item.partPers } / ${item.colPers }</td>
 											<td>${item.userId }</td>
 											<td>
-											<div class="button button-sm button-primary button-winona" onclick="">
+											<div class="button button-sm button-primary button-winona" onclick="location.href='/bookChat/chat?id=${ item.debatecolSeq }'">
 												<a class="content-original">이동하기</a>
 												<a class="content-dubbed">이동하기</a>
 											</div>	

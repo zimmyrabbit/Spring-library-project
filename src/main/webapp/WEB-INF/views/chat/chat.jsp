@@ -34,9 +34,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-		
 	<div style="margin-top: 5px;" class="col-md-12">
-						<h6 style="margin-left: 5px;">Discussion</h6>	
+						<h6 style="margin-left: 5px;">Discussion [${book.debateTitle}]</h6>	
 	<div id="messageArea" class="form-input col-md-12" style="overflow:auto; overflow-x:scroll;overflow-x:hidden; height: 550px;"></div>
 	
 	<div class="col-md-12" style="display:flex;">
@@ -109,11 +108,27 @@ function autoLink(value) {
 			alert('채팅을 입력해주세요.');
 			return false;
 		}
+
+		let url = "<c:url value='/bookChat/procDate'/>";
 		
-		let msg = autoLink($('#_msg_send').val()) + '|' + '${sessionScope.loginSession.userId}';
-		$('#_msg_send').val(msg);
-		sendMessage();
-		$('#_msg_send').val('');
+		$.ajax({
+			type : 'POST',
+			url : url,
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType : "json",
+			data : {'chatSeq':'${book.debatecolSeq}', 'userSeq':'${sessionScope.loginSession.userSeq}', 'userId':'${sessionScope.loginSession.userId}', 'chatCon' :$('#_msg_send').val() },
+			success : function(data) {
+				if(data.proc == "success") {
+					let msg = autoLink($('#_msg_send').val()) + '|' + '${sessionScope.loginSession.userId}';
+					$('#_msg_send').val(msg);
+					sendMessage();
+					$('#_msg_send').val('');
+				}
+ 			},
+			error : function(xhr, status, error) {
+				alert('예기치 못한 에러 발생');
+			}
+		});
 	};
 
 	let sock = new SockJS("http://localhost:8080/echo");

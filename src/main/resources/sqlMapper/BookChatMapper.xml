@@ -83,5 +83,10 @@
 		WHERE debatecolSeq = #{debateSeq}
 		AND userSeq = #{userSeq}
 	</update>
+	
+	<insert id="insertChatData" parameterType="java.util.HashMap">
+		INSERT INTO nonfacedebatechat ( userSeq, userId, chatCon, writeDate )
+		VALUES ( #{userSeq}, #{userId}, #{chatCon}, now())
+	</insert>
      
 </mapper>
