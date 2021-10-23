@@ -6,8 +6,8 @@
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">토론 모집</h6>
-						<h1 class="breadcrumbs-custom-title">토론 모집</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated" style="color:white;">토론 모집</h6>
+						<h1 class="breadcrumbs-custom-title" style="color:white;">토론 모집</h1>
 					</div>
 				</div>
 			</div>

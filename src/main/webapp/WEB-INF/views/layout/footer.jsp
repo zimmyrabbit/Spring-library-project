@@ -23,7 +23,6 @@
               </div>
               <div class="footer-advanced-aside">
                 <div class="container">
-                  <div class="footer-advanced-layout"><a class="brand" href="index.html"><img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="167" height="44"/></a>
                     <!-- Rights-->
                     <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>All Rights Reserved.</span><span>&nbsp;</span><br class="d-sm-none"/><a href="privacy-policy.html">Privacy Policy</a></p>
                   </div>

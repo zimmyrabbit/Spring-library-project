@@ -3,7 +3,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 		<section class="breadcrumbs-custom bg-image"
-			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
+			style="background-image: url(${path}/resources/images/title.png);">
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
@@ -45,7 +45,7 @@
 							<!-- Nav tabs-->
 							<ul class="nav nav-tabs">
 								<li class="nav-item active" role="presentation"><a
-									class="nav-link active" href="#tabs-1-1" data-toggle="tab">개인정보수정</a></li>
+									class="nav-link active" href="#tabs-1-1" data-toggle="tab" id="nav_first">개인정보수정</a></li>
 								<li class="nav-item" role="presentation"><a
 									class="nav-link" href="#tabs-1-2" data-toggle="tab">비밀번호 변경</a></li>
 								<li class="nav-item" role="presentation"><a
@@ -60,7 +60,7 @@
 								</li>
 								<li class="nav-item" role="presentation">
 									<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
-										<a class="nav-link" href="#tabs-1-4" data-toggle="tab">
+										<a class="nav-link" href="#tabs-1-4" data-toggle="tab" id="nav_bbs">
 											모든 게시글 보기
 										</a>	
 									</c:if>
@@ -254,6 +254,19 @@
 		
 		
 <script type="text/javascript">
+window.onload = function(){
+
+	let login = '${ bbs_admin }';
+	if( login == "Y") {
+		$('#tabs-1-1').removeClass('show active in');
+		$('#nav_first').removeClass('active');
+		$('#tabs-1-4').addClass('show active in');
+		$('#nav_bbs').addClass('active show');
+	}
+}
+
+
+
 $('#updateBtn').click(function(){
 
 	if( $('#password_cur').val() == "" ) {
@@ -398,7 +411,8 @@ function bbs_admin(board_id , table_nm) {
 		data : {'board_id': board_id, 'table_nm': table_nm},
 		success : function(data) {
 			if(data.proc == "success") {
-				location.reload();
+				let bbs_admin = "Y"
+				location.href="<c:url value='/user/userMyPage'/>?bbs_admin=" + bbs_admin;
 			}else {
 				alert("삭제를 실패했습니다.");
 			}

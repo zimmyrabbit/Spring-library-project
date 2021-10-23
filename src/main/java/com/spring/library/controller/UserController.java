@@ -143,6 +143,10 @@ public class UserController {
 			model.addAttribute("reviewList", reviewList);
 		}
 		
+		if(request.getParameter("bbs_admin") != null) {
+			model.addAttribute("bbs_admin", request.getParameter("bbs_admin"));
+		}
+		
 	}	
 	
 	

@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
 
+
+		<section class="breadcrumbs-custom bg-image"
+			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
+			<div class="breadcrumbs-custom-inner">
+				<div class="breadcrumbs-custom-container container">
+					<div class="breadcrumbs-custom-main">
+						<h6 class="breadcrumbs-custom-subtitle title-decorated" style="color:white;">도서 리뷰</h6>
+						<h1 class="breadcrumbs-custom-title" style="color:white;">도서 리뷰</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+
 <div class="container" style="margin-top : 30px;">
 <div class="row container-board-padding" style="display: flex; justify-content: center;">
 <div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row "> 

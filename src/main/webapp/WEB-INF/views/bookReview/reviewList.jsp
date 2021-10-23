@@ -8,8 +8,8 @@
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">도서 리뷰</h6>
-						<h1 class="breadcrumbs-custom-title">도서 리뷰</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated" style="color:white;">도서 리뷰</h6>
+						<h1 class="breadcrumbs-custom-title" style="color:white;">도서 리뷰</h1>
 					</div>
 				</div>
 			</div>

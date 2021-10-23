@@ -22,7 +22,7 @@
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="/resources/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="preloader">
-      <div class="preloader-logo"><img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="83" height="22"/>
+      <div class="preloader-logo"><img src="<c:url value='/resources/_logo.png'/>" alt="" width="83" height="22"/>
       </div>
       <div class="preloader-body">
         <div id="loadingProgressG">
@@ -43,7 +43,7 @@
                   <!-- RD Navbar Toggle-->
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="/">
-                  <img src="https://www.snlib.go.kr/include/image/bd/common/logo.png" alt="" width="83" height="22"/></a>
+                  <img src="<c:url value='/resources/_logo.png'/>" alt="" width="83" height="22"/></a>
                 </div>
                 <div class="rd-navbar-collapse">
                   <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content"><span></span></button>

@@ -4,7 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 		
 		<section class="breadcrumbs-custom bg-image"
-			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
+			style="background-image: url(${path}/resources/images/title.png);">
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">

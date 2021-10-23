@@ -6,13 +6,12 @@
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">도서 검색</h6>
-						<h1 class="breadcrumbs-custom-title">도서 검색</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated" style="color:white;">도서 정보</h6>
+						<h1 class="breadcrumbs-custom-title" style="color:white;">도서 정보</h1>
 					</div>
 				</div>
 			</div>
 		</section>
-
 
 <div style="text-align:center; margin: 50px 0px;">
 
