@@ -112,4 +112,10 @@ public class BookChatController {
 		
 		return partPers;
 	}
+	
+	@RequestMapping(value="/bookChat/chat", method=RequestMethod.GET)
+	public String chat() {
+		return "/chat/chat";
+	}
+
 }
