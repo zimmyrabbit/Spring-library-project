@@ -1,5 +1,6 @@
 package com.spring.library.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,5 +48,13 @@ public class UserService {
 	
 	public int nonfacedebatecollectRemove(Map<String, String> args) {
 		return userDao.nonfacedebatecollectRemove(args);
+	}
+
+	public HashMap<String, Object> getUserJoinData() {
+		return userDao.selectUserJoinData();
+	}
+
+	public HashMap<String, Object> getReviewCnt() {
+		return userDao.selectReviewCnt();
 	}
 }

@@ -235,4 +235,20 @@ public class UserController {
 		}
 		return map;
 	}
+	
+	@RequestMapping(value="/user/chartData", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> chartDate() {
+		
+		HashMap<String,Object> userMap = userService.getUserJoinData();
+		
+		HashMap<String,Object> reviewMap = userService.getReviewCnt();
+		
+		Map<String,Object> map = new HashMap<>();
+		
+		map.put("user", userMap);
+		map.put("rev", reviewMap);
+		
+		return map;
+	}
 }

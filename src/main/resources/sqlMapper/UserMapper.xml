@@ -64,4 +64,26 @@
     <delete id="nonfacedebatecollectRemove" parameterType="java.util.HashMap">
    		DELETE FROM nonfacedebatecollect WHERE debatecolSeq = #{ board_id }
     </delete>
+    
+    <select id="selectUserJoinData" resultType="java.util.HashMap">
+    SELECT
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = CURDATE()) AS '0',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -1 day)) AS '1',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -2 day)) AS '2',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -3 day)) AS '3',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -4 day)) AS '4',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -5 DAY)) AS '5',
+	(SELECT COUNT(joindate) FROM userinfo WHERE DATE_FORMAT(joindate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -6 DAY)) AS '6'
+    </select>
+    
+    <select id="selectReviewCnt" resultType="java.util.HashMap">
+    SELECT
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = CURDATE()) AS '0',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -1 day)) AS '1',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -2 day)) AS '2',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -3 day)) AS '3',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -4 day)) AS '4',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -5 DAY)) AS '5',
+	(SELECT COUNT(enrollDate) FROM bookreview WHERE DATE_FORMAT(enrollDate, "%Y-%m-%d") = date_add(curdate(), INTERVAL -6 DAY)) AS '6'
+    </select>
 </mapper>

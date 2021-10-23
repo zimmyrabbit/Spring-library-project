@@ -72,7 +72,7 @@
 								</li>	
 								<li class="nav-item" role="presentation">
 									<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
-										<a class="nav-link" href="#tabs-1-5" data-toggle="tab">
+										<a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="getChart()">
 											통계보기
 										</a>	
 									</c:if>
@@ -241,7 +241,8 @@
 								<!-- 통계 tab -->
 								<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
 									<div class="tab-pane fade" id="tabs-1-5">
-									
+									<canvas id="userChart"></canvas>
+									<canvas id="revChart"></canvas>
 									</div>			
 								</c:if>		
 											
@@ -252,7 +253,7 @@
 			</div>
 		</section>
 		
-		
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>		
 <script type="text/javascript">
 window.onload = function(){
 
@@ -421,6 +422,123 @@ function bbs_admin(board_id , table_nm) {
 			alert('예기치 못한 에러 발생');
 		}
 	});
+}
+
+function getChart() {
+	
+	$.ajax({
+		method : "GET"
+		, url : '<c:url value="/user/chartData"/>'
+		, dataType : "json"
+		, success : function(data) {
+			
+			var date = new Date();
+			var date = ("0" + date.getDate()).slice(-2);
+			
+            var context = document
+            .getElementById('userChart')
+            .getContext('2d');
+        	var myChart = new Chart(context, {
+            type: 'bar',
+            data: { 
+                labels: [
+                    date + '일', date-1 + '일', date-2 + '일', date-3 + '일', date-4 + '일',date-5 + '일',date-6 + '일'
+                ],
+                datasets: [
+                    { 
+                        label: '일주일간 가입자 수', 
+                        fill: false,
+                        data: [
+                            data.user['0'],data.user['1'],data.user['2'],data.user['3'],data.user['4'],data.user['5'],data.user['6']
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(0, 0, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+        	
+            var context = document
+            .getElementById('revChart')
+            .getContext('2d');
+        	var myChart = new Chart(context, {
+            type: 'bar',
+            data: { 
+                labels: [
+                    date + '일', date-1 + '일', date-2 + '일', date-3 + '일', date-4 + '일',date-5 + '일',date-6 + '일'
+                ],
+                datasets: [
+                    { 
+                        label: '일주일간 리뷰 작성 수', 
+                        fill: false,
+                        data: [
+                            data.rev['0'],data.rev['1'],data.rev['2'],data.rev['3'],data.rev['4'],data.rev['5'],data.rev['6']
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(0, 0, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+			
+		}
+	})
 }
 
 
