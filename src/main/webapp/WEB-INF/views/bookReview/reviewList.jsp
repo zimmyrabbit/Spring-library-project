@@ -16,7 +16,7 @@
 		</section>
 		
 		<div class="container" style="margin-top : 30px;">
-			<div class="row container-board-padding">
+			<div class="row container-board-padding" style="justify-content: center;">
 	          	<div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row ">      
 					<table class="table table-hover table-job-positions text-center">
 						<thead class="thead_top">

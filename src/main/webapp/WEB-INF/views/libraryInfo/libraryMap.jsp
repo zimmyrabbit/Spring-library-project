@@ -5,7 +5,21 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<div id="map" style="width:1000px;height:500px;"></div>
+		<section class="breadcrumbs-custom bg-image"
+			style="background-image: url(${path}/resources/images/breadcrumbs-bg.jpg);">
+			<div class="breadcrumbs-custom-inner">
+				<div class="breadcrumbs-custom-container container">
+					<div class="breadcrumbs-custom-main">
+						<h6 class="breadcrumbs-custom-subtitle title-decorated">도서관 정보</h6>
+						<h1 class="breadcrumbs-custom-title">도서관 정보</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+<div style="text-align: center; margin : 50px 0px;">
+<div id="map" style="width:1000px;height:500px; display:inline-block;"></div>
+</div>
+
 
 <script>
 

@@ -2,30 +2,31 @@
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
 
 <div class="container" style="margin-top : 30px;">
-<div class="row container-board-padding">
+<div class="row container-board-padding" style="display: flex; justify-content: center;">
 <div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row "> 
 
 <form action="/bookReview/reviewWrite" method="post">
 		
-		<div>
-			<img src="${map.bookImg }"/>
-			제목 : <input type="text" id="title" name="title" readonly="readonly" value="${map.title}"/> <br>
-			주소 : <a href="${map.bookUrl }">${map.bookUrl }</a>
+		<div style="font-size: 1.5em; margin : 40px 0px;">
+			제목 : ${map.title}
 		</div>
 		
-		<div>
-		<textarea rows="10" cols="50" readonly="readonly" id="bookIntro" name="bookIntro" style="overflow-x:hidden; overflow-y:auto;">${map.bookIntro }</textarea>
-		</div>
+		<table style="margin : 40px 0px;">
+			<tr>
+			<td width="130px;"><img src="${map.bookImg }" style="height:173px;"/></td>
+			<td>${map.bookIntro }<td>
+			</tr>
+		</table>
 		
-		<div>
-		<textarea rows="10" cols="40" id="bookRev" name="bookRev" ></textarea>
+		<div style="text-align: center;">
+		<textarea rows="10" cols="80" id="bookRev" name="bookRev" class="form-input form-control-has-validation form-control-last-child"></textarea>
 		</div>
 		
 		<input type="hidden" value="${map.isbn }" id="isbn" name="isbn" />
 		<input type="hidden" value="${map.bookUrl }" id="bookUrl" name="bookUrl" />
 		<input type="hidden" value="${map.bookImg }" id="bookImg" name="bookImg" />
 		
-		<input type="submit" id="subBtn" value="쓰기" />
+		<input type="submit" id="subBtn" value="쓰기" class="button button-primary button-winona" style="margin-bottom: 40px;"/>
 </form>
 
 

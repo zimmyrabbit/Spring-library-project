@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
 
 <div class="container" style="margin-top : 30px;">
-<div class="row container-board-padding">
+<div class="row container-board-padding" style="display: flex; justify-content: center;">
 <div class="col-sm-12 col-md-12 col-lg-12  col-xl-9 table-responsive wow fadeIn row "> 
 
 <table class="table table-hover table-job-positions text-center">
@@ -17,11 +17,11 @@
 		<div id="partBtn">
 		<c:if test="${map.partPers ne map.colPers }">
 			<c:if test="${sessionScope.loginSession.userSeq ne map.userSeq && flag eq false}">
-			<button type="button" onclick="joinDebate()">참여하기</button>
+			<button type="button" onclick="joinDebate()" class="button button-primary button-winona">참여하기</button>
 			</c:if>
 		</c:if>
 			<c:if test="${sessionScope.loginSession.userSeq ne map.userSeq && flag eq true}">
-			<button type="button" onclick="cancleDebate()">참여취소</button>
+			<button type="button" onclick="cancleDebate()" class="button button-primary-outline button-winona">참여취소</button>
 			</c:if>
 		</div>
 		</td>
@@ -32,11 +32,11 @@
 ${map.debateCon }
 </div>
 
-<a href="/bookChat/nonfaceDebateCollect"><button>목록</button></a>
+<a href="/bookChat/nonfaceDebateCollect"><button class="button button-primary button-winona">목록</button></a>
 
 <c:set var="admin" value="adminmaster" />
 <c:if test="${sessionScope.loginSession.userSeq eq map.userSeq || sessionScope.loginSession.userId eq admin}">
-<a href="/bookChat/nonfaceDebateCollectDelete?no=${map.debatecolSeq }"><button>삭제</button></a>
+<a href="/bookChat/nonfaceDebateCollectDelete?no=${map.debatecolSeq }"><button class="button button-primary-outline button-winona">삭제</button></a>
 </c:if>
 
 </div>
