@@ -70,6 +70,13 @@
 										</a>
 									</c:if>
 								</li>	
+								<li class="nav-item" role="presentation">
+									<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+										<a class="nav-link" href="#tabs-1-5" data-toggle="tab">
+											통계보기
+										</a>	
+									</c:if>
+								</li>
 							</ul>
 							<br>
 							<br>
@@ -229,7 +236,15 @@
 										</tbody>
 									</table>							 	
 							 	</c:if>							 	
-								</div>									
+								</div>	
+								
+								<!-- 통계 tab -->
+								<c:if test="${sessionScope.loginSession.userId eq 'adminmaster' }">
+									<div class="tab-pane fade" id="tabs-1-5">
+									
+									</div>			
+								</c:if>		
+											
 							</div>
 						</div>
 					</div>
