@@ -39,7 +39,7 @@ public class UserController {
 	@RequestMapping(value="/user/userReg", method=RequestMethod.GET)
 	public void userReg (Model model, HttpServletRequest request) {	
 		
-		model.addAttribute("login", request.getParameter("btn").toString());
+		model.addAttribute("login", request.getParameter("btn"));
 	}
 
 	// 회원가입 데이터 insert
