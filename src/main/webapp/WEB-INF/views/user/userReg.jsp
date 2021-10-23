@@ -8,8 +8,8 @@
 			<div class="breadcrumbs-custom-inner">
 				<div class="breadcrumbs-custom-container container">
 					<div class="breadcrumbs-custom-main">
-						<h6 class="breadcrumbs-custom-subtitle title-decorated">제목 미정</h6>
-						<h1 class="breadcrumbs-custom-title">제목 미정</h1>
+						<h6 class="breadcrumbs-custom-subtitle title-decorated">sign up & sign in</h6>
+						<h1 class="breadcrumbs-custom-title">회원페이지</h1>
 					</div>
 				</div>
 			</div>
@@ -25,10 +25,10 @@
 						<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 							<!-- Nav tabs-->
 							<ul class="nav nav-tabs">
-								<li class="nav-item active" role="presentation"><a
-									class="nav-link active" href="#tabs-1-1" data-toggle="tab">회원가입</a></li>
 								<li class="nav-item" role="presentation"><a
-									class="nav-link" href="#tabs-1-2" data-toggle="tab">로그인</a></li>
+									class="nav-link active" href="#tabs-1-1" data-toggle="tab" id="nav_join">회원가입</a></li>
+								<li class="nav-item" role="presentation"><a
+									class="nav-link" href="#tabs-1-2" data-toggle="tab" id="nav_login">로그인</a></li>
 							</ul>
 							<br>
 							<br>
@@ -79,9 +79,19 @@
 		</section>
 
 <script>
+window.onload = function(){
 
+	let login = '${ login }';
+	if( login == "login") {
+		$('#tabs-1-1').removeClass('show active in');
+		$('#nav_join').removeClass('active');
+		$('#tabs-1-2').addClass('show active in');
+		$('#nav_login').addClass('active show');
+	}
+}
 $(document).ready(function() {
 
+	
 	userFunction = new userFunction(); 
 
 	$('#id').blur(function(){

@@ -37,7 +37,10 @@ public class UserController {
 	BookReviewService bookReviewService;
 
 	@RequestMapping(value="/user/userReg", method=RequestMethod.GET)
-	public void userReg (Model model, HttpServletRequest request) {	}
+	public void userReg (Model model, HttpServletRequest request) {	
+		
+		model.addAttribute("login", request.getParameter("btn").toString());
+	}
 
 	// 회원가입 데이터 insert
 	@SuppressWarnings("static-access")
@@ -53,13 +56,13 @@ public class UserController {
 		formData.put("password", HashNMacUtil.EncBySha256(password));
 	
 	
-			int insertResult = userService.joinUser(formData);
-	
-			if (insertResult == 1) {
-				map.put("proc", "success");
-			} else {
-				throw new Exception();
-			}
+		int insertResult = userService.joinUser(formData);
+
+		if (insertResult == 1) {
+			map.put("proc", "success");
+		} else {
+			throw new Exception();
+		}
 	
 		return map;
 	}
