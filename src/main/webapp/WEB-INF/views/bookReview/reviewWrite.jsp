@@ -35,6 +35,8 @@
 		<textarea rows="10" cols="80" id="bookRev" name="bookRev" class="form-input form-control-has-validation form-control-last-child"></textarea>
 		</div>
 		
+		<input type="hidden" value="${map.title }" id="title" name="title" />
+		<input type="hidden" value="${map.bookIntro }" id="bookIntro" name="bookIntro" />
 		<input type="hidden" value="${map.isbn }" id="isbn" name="isbn" />
 		<input type="hidden" value="${map.bookUrl }" id="bookUrl" name="bookUrl" />
 		<input type="hidden" value="${map.bookImg }" id="bookImg" name="bookImg" />
