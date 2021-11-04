@@ -102,6 +102,15 @@
                         </li>
                       </ul>
                     </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#">학술 정보</a>
+                      <ul class="rd-menu rd-navbar-dropdown">
+                        <li class="rd-dropdown-item">
+                        <a class="rd-dropdown-link" href="<c:url value='/rissSearch/rissSearch'/>">
+                        	논문 검색
+                        </a>
+                        </li>
+                      </ul>
+                    </li>                    
                     <li class="rd-nav-item"><a class="rd-nav-link" href="#">랭킹 이벤트</a>
                       <ul class="rd-menu rd-navbar-dropdown">
                         <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/bookReview/reviewRank">랭킹 이벤트</a>
