@@ -1,27 +1,38 @@
 package com.spring.library.controller;
 import java.io.IOException;
 import java.util.HashMap;
+
 import javax.servlet.http.HttpServletResponse;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.library.service.RissService;
 import com.spring.library.util.ResponseHelper;
 
 @Controller
 public class RissSearchController {
+	
+	@Autowired RissService service;
 
 	@RequestMapping(value="/rissSearch/rissSearch", method=RequestMethod.GET)
-	public void rissSearch() { }
+	public void rissSearch(Model model) { 
+		HashMap<String, Object> map = service.list();
+		model.addAttribute("riss", map);
+		
+	}
 	
 	@RequestMapping(value="/rissSearch/rissSearch", method=RequestMethod.POST)
 	@ResponseBody
@@ -40,11 +51,13 @@ public class RissSearchController {
             // 4. HTML 출력
           //  System.out.println( html.toString() ); 
             JSONArray jArray = new JSONArray();
+            JSONArray pArray = new JSONArray();
             int cnt = 0;
+            
             Elements cont = html.getElementsByClass("cont");
             for( Element subject : cont ) {  
                 Elements t = subject.getElementsByClass("title");
-                
+                Elements p = subject.getElementsByClass("preAbstract");
                 for( Element title : t ) {
                     Elements f = title.getElementsByTag("a");
                     for( Element elm : f ) {
@@ -52,10 +65,17 @@ public class RissSearchController {
                     	obj.put("title", elm.text());
                     	obj.put("url", elm.attr("href"));
                     	jArray.add(obj);
+                    }
+                    for( Element el : p ) {
+                    	JSONObject obj2 = new JSONObject();	
+                    	obj2.put("detail", el.text());
+                    	pArray.add(obj2);
                     	cnt++;
                     }
                     jsonResult.put("data", jArray);
+                    jsonResult.put("detail", pArray);
                 }
+                
             }
             if(cnt > 0) {
             	jsonResult.put("proc", "success");
