@@ -42,12 +42,27 @@
 		<input type="text"  class="form-input col-md-10" id="_msg_send" onKeyPress="if( event.keyCode==13 ){ msg_sock_chat(); }" style="margin-left: -12px;" />
 		<input type="button" id="sendBtn" value="전송" onclick="msg_sock_chat();" class="button button-sm button-primary col-md-2" style="margin: 0; margin-left: 30px;" />
 	</div>
+		<div class="col-md-12" style="">
+	<button type="submit" id="search" name="search" class="button button-primary button-winona" style="margin-bottom: 100px; margin-left: -12px; margin-top: 20px;" onclick="bookSearch()">도서 정보 찾기</button>
+	<button type="submit" id="search" name="search" class="button button-primary button-winona" style="margin-bottom: 100px; margin-left: 10px; margin-top: 20px;" onclick="rissSearch()">관련 논문 찾기</button>
 	</div>
+	</div>
+	
 </div>
 </div>
 </div>
 </section>
 <script type="text/javascript">
+
+function bookSearch() {
+	location.href = "<c:url value='/bookSearch/bookSearch'/>";
+}
+
+function rissSearch() {
+	location.href = "<c:url value='/rissSearch/rissSearch'/>";
+}
+
+
 function autoLink(value) {
 
 	  var doc = value;

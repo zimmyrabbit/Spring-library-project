@@ -43,9 +43,16 @@
 		<tr>
 	</c:if>
 </table>
+<button type="submit" id="search" name="search" class="button button-primary button-winona" style="margin-bottom: 100px;" onclick="bookSearch()">모집글 작성하기</button>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
+<script>
+
+function bookSearch() {
+	location.href = "<c:url value='/bookSearch/bookSearch'/>";
+}
+</script>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>
